@@ -1,0 +1,427 @@
+:root {
+  --beige: #fffdf0;
+  --brown: #b6825b;
+  --light-grey: #e1e1e1;
+  --pink: #e5516e;
+  --sun: #ffe700;
+}
+@font-face {
+  font-family: "gilroy";
+  src: url(/Gilroy-Light.otf) format("opentype");
+}
+@font-face {
+  font-family: "brick";
+  src: url(/NTBrickSans.otf) format("opentype");
+}
+@font-face {
+  font-family: "norwester";
+  src: url(/norwester.otf) format("opentype");
+}
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+body {
+  height: 100%;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: var(--beige);
+  overflow-x: hidden;
+}
+* {
+  font-family: "gilroy";
+  box-sizing: border-box;
+}
+
+/* Navigation bar */
+#page1 {
+  position: relative;
+  height: fit-content;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 1vw 4vw;
+  padding-top: 2vw;
+  justify-content: space-between;
+}
+
+#menublur {
+  display: none;
+}
+
+#menuicon {
+  display: none;
+}
+
+#menucloseicon {
+  display: none;
+}
+
+#navlinks {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+#link {
+  font-family: "norwester";
+  font-size: 2vw;
+  color: var(--brown);
+  text-decoration: none;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+#socialnav {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+#navicon {
+  height: 2.5vw;
+}
+
+/* NAvline */
+#navline {
+  height: 0.4vw;
+  background-color: var(--brown);
+  margin: auto 4vw;
+  border-radius: 2rem; /* Optional: for rounded edges */
+}
+
+/* section */
+#herotextcontainer {
+  position: relative;
+  margin: 0;
+  padding: 1vw 4vw;
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+#herotextsm {
+  display: none;
+}
+
+#herotext {
+  top: 0;
+  font-size: 18vw;
+  line-height: 1.1;
+  white-space: nowrap;
+  width: 100%;
+  z-index: 1;
+  margin: 0;
+  font-family: "brick";
+  color: var(--light-grey);
+  pointer-events: none;
+  letter-spacing: 1;
+}
+
+#myimagesm {
+  display: none;
+}
+
+/* Bottom Links */
+#bottomlink {
+  padding: 0.5vw 4vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 1vw;
+}
+#post {
+  height: 3vw;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5vw;
+  background-color: var(--brown);
+  border-radius: 2vw;
+}
+#post h2 {
+  font-family: "norwester";
+  font-size: 1.5vw;
+  color: var(--beige);
+  text-transform: uppercase;
+}
+#post2{
+  display: none;
+}
+#resume {
+  height: 3vw;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5vw;
+  padding-right: 1.5vw;
+  background-color: var(--pink);
+  border-radius: 2vw;
+  border: none;
+}
+#resume h2 {
+  font-family: "norwester";
+  font-size: 1.5vw;
+  color: var(--beige);
+  text-transform: uppercase;
+}
+
+#myimage {
+  position: absolute;
+  width: 42vw; /* take it out of flow */
+  top: 18%;
+  right: 10%; /* space from left */
+  z-index: 3;
+  pointer-events: none;
+}
+
+#cloud1 {
+  position: absolute;
+  width: 15vw;
+  top: 12%;
+  z-index: 2;
+  right: 5%;
+}
+
+#cloud2 {
+  position: absolute;
+  width: 35vw;
+  top: 35%;
+  z-index: 2;
+  right: 25%;
+}
+
+#cloud3 {
+  position: absolute;
+  width: 15vw;
+  bottom: 22%;
+  z-index: 2;
+  left: 3%;
+}
+#page1bg {
+  position: absolute;
+  height: 100%;
+  bottom: 0%;
+  right: 15%;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  #page1 {
+    position: relative;
+    height: fit-content;
+    overflow: hidden;
+  }
+
+  nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 1vw 4vw;
+    padding-top: 5vw;
+    justify-content: space-between;
+  }
+
+  #menublur {
+    display: none;
+    position: fixed;
+    z-index: 90; /* make sure it's on top of EVERYTHING */
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+    pointer-events: none;
+    background-color: var(--beige);
+    backdrop-filter: blur(50px);
+    opacity: 0.9;
+  }
+  #menuicon {
+    display: inline-block;
+    height: 10vw;
+    z-index: 90;
+    fill: var(--brown);
+  }
+  #menucloseicon {
+    display: none;
+    height: 10vw;
+  }
+  #navlinks {
+    position: absolute;
+    top: 10vh;
+    margin-top: 4vw;
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    gap: 2vw;
+    z-index: 999;
+  }
+
+  #link {
+    font-family: "norwester";
+    font-size: 8vw;
+    color: var(--brown);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  #socialnav {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+  }
+  #navicon {
+    height: 10vw;
+    fill: #b6825b;
+  }
+
+  /* NAvline */
+  #navline {
+    height: 1vw;
+    background-color: var(--brown);
+    margin: 2vw 4vw;
+    border-radius: 2rem; /* Optional: for rounded edges */
+  }
+  /* section */
+  #herotextcontainer {
+    position: relative;
+    margin: 0;
+    padding: 1vw 4vw;
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  #herotextsm {
+    display: block;
+    font-size: 18.5vw;
+    line-height: 1.1;
+    white-space: nowrap;
+    width: 100%;
+    padding: 0;
+    z-index: 1;
+    margin: 0;
+    font-family: "brick";
+    color: var(--light-grey);
+    pointer-events: none;
+  }
+
+  #herotext {
+    top: 0;
+    font-size: 18.5vw;
+    line-height: 1.1;
+    white-space: nowrap;
+    width: 100%;
+    padding: 0;
+    z-index: 1;
+    margin: 0;
+    font-family: "brick";
+    color: var(--light-grey);
+    pointer-events: none;
+  }
+
+  /* Bottom Links */
+  #bottomlink {
+    padding: 0.5vw 4vw;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  #post {
+    display: none;
+  }
+  #post2 {
+    height: 10vw;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4vw;
+    background-color: var(--brown);
+    border-radius: 6vw;
+  }
+   #post2 h2 {
+    font-family: "norwester";
+    font-size: 6vw;
+    color: var(--beige);
+    text-transform: uppercase;
+  }
+  #resume {
+    height: 10vw;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4.5vw;
+    padding-right: 2vw;
+    background-color: var(--pink);
+    border-radius: 6vw;
+    border: none;
+  }
+  #resume h2 {
+    font-family: "norwester";
+    font-size: 6vw;
+    color: var(--beige);
+    text-transform: uppercase;
+  }
+
+  #myimagesm {
+    display: block;
+    width: 120%;
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+  }
+
+  #myimage {
+    display: none;
+  }
+
+  #cloud1 {
+    position: absolute;
+    width: 35vw;
+    top: 12%;
+    z-index: 2;
+    right: 5%;
+  }
+
+  #cloud2 {
+    position: absolute;
+    width: 25vw;
+    top: 45%;
+    z-index: 2;
+    right: 3%;
+  }
+
+  #cloud3 {
+    position: absolute;
+    width: 25vw;
+    top: 22%;
+    z-index: 2;
+    left: 3%;
+  }
+  #page1bg {
+    position: absolute;
+    height: 100%;
+    bottom: 0%;
+    transform: translateX(30vw);
+  }
+}
