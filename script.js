@@ -199,7 +199,7 @@ function wrapChar(selector, spanClass) {
       fill: brown,
       duration: 1,
     });
-    isDarkMode = true;
+    isDarkMode = false;
   });}
 
   window.addEventListener("load", () => {
@@ -759,6 +759,7 @@ function wrapChar(selector, spanClass) {
           }
         );
         tl.from("#page1bg", {
+          x:"-50vw",
           scale: 0,
           opacity: 0,
           duration: 1,
@@ -766,7 +767,7 @@ function wrapChar(selector, spanClass) {
         tl.from("#link", {
           y: "-8vw",
           duration: 1,
-          stagger: 0.2,
+          stagger: 0.1,
           ease: "back.out",
           onComplete: () => {
             gsap.fromTo(
