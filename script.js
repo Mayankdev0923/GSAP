@@ -1,6 +1,6 @@
-const menuButton = document.getElementById("menuicon");
+const menuButton = document.getElementById("sidemenuopenicon");
 const menuLinks = document.getElementById("navlinks");
-const menuCloseButton = document.getElementById("menucloseicon");
+const menuCloseButton = document.getElementById("sidemenucloseicon");
 const menuBlur = document.getElementById("menublur");
 const resume = document.getElementById("resume");
 const post = document.getElementById("post");
@@ -13,6 +13,7 @@ const sun = "#ffe700";
 const lightblue = "#a1b2ff";
 const orange = "#f9a01b";
 const darkblue = "#5271ff";
+const darkbrown = "#966e50";
 
 function wrapEachChar(selector, spanClass) {
   const blocks = document.querySelectorAll(selector);
@@ -47,6 +48,87 @@ function wrapChar(selector, spanClass) {
     el.appendChild(span);
   });
 }
+function setTheme(isDark) {
+  if (isDark) {
+    // Dark mode
+    gsap.to("body", {
+      backgroundColor: brown,
+      duration: 1,
+    });
+    gsap.to(["#post h2", "#post2 h2"], {
+      color: brown,
+      duration: 1,
+    });
+    gsap.to(["#navline", "#post", "#post2"], {
+      backgroundColor: beige,
+      duration: 1,
+    });
+    gsap.to(".link", {
+      color: beige,
+      duration: 1,
+    });
+    gsap.to("#menublur", {
+      backgroundColor: brown,
+      duration: 1,
+    });
+    gsap.to("#darkmode", {
+      opacity: 0,
+      display: "none",
+      duration: 1,
+      onComplete: () => {
+        gsap.to("#lightmode", {
+          opacity: 1,
+          display: "inline-block",
+          duration: 1,
+        });
+      },
+    });
+    gsap.to(["#navicon path", "#sidemenuopenicon", "#sidemenucloseicon"], {
+      fill: beige,
+      duration: 1,
+    });
+    isDarkMode = true;
+  } else {
+    // Light mode
+    gsap.to("body", {
+      backgroundColor: beige,
+      duration: 1,
+    });
+    gsap.to(["#post h2", "#post2 h2"], {
+      color: beige,
+      duration: 1,
+    });
+    gsap.to(["#navline", "#post", "#post2"], {
+      backgroundColor: brown,
+      duration: 1,
+    });
+    gsap.to(".link", {
+      color: brown,
+      duration: 1,
+    });
+    gsap.to("#menublur", {
+      backgroundColor: beige,
+      duration: 1,
+    });
+    gsap.to("#lightmode", {
+      opacity: 0,
+      display: "none",
+      duration: 1,
+      onComplete: () => {
+        gsap.to("#darkmode", {
+          opacity: 1,
+          display: "inline-block",
+          duration: 1,
+        });
+      },
+    });
+    gsap.to(["#navicon path", "#sidemenuopenicon", "#sidemenucloseicon"], {
+      fill: brown,
+      duration: 1,
+    });
+    isDarkMode = false;
+  }
+}
 
 //section1
 {
@@ -59,7 +141,7 @@ function wrapChar(selector, spanClass) {
     gsap.set(menuButton, { display: "none" });
     gsap.set(menuBlur, { display: "flex", x: "-100vw", opacity: 0 });
     gsap.set(menuLinks, { display: "flex" });
-    gsap.set("#link", { x: "-80vw", opacity: 0, display: "block" });
+    gsap.set(".link", { x: "-80vw", opacity: 0, display: "block" });
 
     // Animate
     gsap.to(menuBlur, {
@@ -68,7 +150,7 @@ function wrapChar(selector, spanClass) {
       duration: 0.7,
       delay: 0.2,
     });
-    tl.to("#link", {
+    tl.to(".link", {
       x: 0,
       opacity: 1,
       duration: 0.8,
@@ -88,12 +170,12 @@ function wrapChar(selector, spanClass) {
       opacity: 0,
       duration: 0.5,
     });
-    tl.to("#link", {
+    tl.to(".link", {
       x: "-80vw",
       duration: 1,
       stagger: -0.1,
       onComplete: () => {
-        gsap.set("#link", { display: "none" });
+        gsap.set(".link", { display: "none" });
       },
     });
     gsap.to(menuBlur, {
@@ -122,87 +204,17 @@ function wrapChar(selector, spanClass) {
 
   //uimodeswitch
   {document.querySelector("#darkmode").addEventListener("click", () => {
-    gsap.to("body", {
-      backgroundColor: brown,
-      duration: 1,
-    });
-    gsap.to(["#post h2", "#post2 h2"], {
-      color: brown,
-      duration: 1,
-    });
-    gsap.to(["#navline", "#post", "#post2"], {
-      backgroundColor: beige,
-      duration: 1,
-    });
-    gsap.to("#link", {
-      color: beige,
-      duration: 1,
-    });
-    gsap.to("#menublur",{
-      backgroundColor:brown,
-      duration:1,
-    })
-    gsap.to("#darkmode", {
-      opacity: 0,
-      display: "none",
-      duration:1,
-      
-      onComplete: () => {
-        gsap.to("#lightmode", {
-          opacity: 1,
-          display: "inline-block",
-          duration:1.
-        });
-      },
-    });
+  setTheme(true);
+});
 
-    gsap.to(["#navicon path","#menuicon","#menucloseicon"], {
-      fill: beige,
-      duration: 1,
-    });
-    isDarkMode = true;
-  });
-  document.querySelector("#lightmode").addEventListener("click", () => {
-    gsap.to("body", {
-      backgroundColor: beige,
-      duration: 1,
-    });
-    gsap.to(["#post h2", "#post2 h2"], {
-      color: beige,
-      duration: 1,
-    });
-    gsap.to(["#navline", "#post", "#post2"], {
-      backgroundColor: brown,
-      duration: 1,
-    });
-    gsap.to("#link", {
-      color: brown,
-      duration: 1,
-    });
-    gsap.to("#menublur",{
-      backgroundColor:beige,
-      duration:1,
-    })
-    gsap.to("#lightmode", {
-      opacity: 0,
-      display: "none",
-      duration:1,
-      onComplete: () => {
-        gsap.to("#darkmode", {
-          opacity: 1,
-          display: "inline-block",
-          duration:1,
-        });
-      },
-    });
-    gsap.to(["#navicon path","#menuicon","#menucloseicon"], {
-      fill: brown,
-      duration: 1,
-    });
-    isDarkMode = false;
-  });}
+document.querySelector("#lightmode").addEventListener("click", () => {
+  setTheme(false);
+});
+}
 
   window.addEventListener("load", () => {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(prefersDark);
     if (window.matchMedia("(max-width: 768px)").matches) {
       wrapEachChar(".herotext", "char");
       wrapEachChar(".herotextsm", "char");
@@ -320,7 +332,7 @@ function wrapChar(selector, spanClass) {
               borderRadius: "20px",
               height: "fit-content",
               width: "fit-content",
-              padding: "0vw 1vw",
+              padding: "0vh 1.7vh",
               duration: 1,
               ease: "back.out",
             });
@@ -355,7 +367,7 @@ function wrapChar(selector, spanClass) {
               borderRadius: "20px",
               height: "fit-content",
               width: "fit-content",
-              padding: "0vw 1vw",
+              padding: "0vh 1.8vh",
               duration: 0.5,
               ease: "back.out",
             });
@@ -387,7 +399,7 @@ function wrapChar(selector, spanClass) {
               borderRadius: "20px",
               height: "fit-content",
               width: "fit-content",
-              padding: "0vw 1vw",
+              padding: "0vh 1.8vh",
               duration: 0.5,
               ease: "back.out",
             });
@@ -412,7 +424,7 @@ function wrapChar(selector, spanClass) {
 
       //links cursor text animation
       {
-        var links = document.querySelectorAll("#link");
+        var links = document.querySelectorAll(".link");
         links.forEach((link) => {
           link.addEventListener("mouseenter", () => {
             gsap.to("#cursor h4", {
@@ -422,7 +434,7 @@ function wrapChar(selector, spanClass) {
               borderRadius: "20px",
               height: "fit-content",
               width: "fit-content",
-              padding: "0vw 1vw",
+              padding: "0vh 1.8vh",
               duration: 0.5,
               ease: "back.out",
             });
@@ -456,7 +468,7 @@ function wrapChar(selector, spanClass) {
               borderRadius: "20px",
               height: "fit-content",
               width: "fit-content",
-              padding: "0vw 1vw",
+              padding: "0vw 1.8vh",
               duration: 0.5,
               ease: "back.out",
             });
@@ -488,7 +500,7 @@ function wrapChar(selector, spanClass) {
               borderRadius: "20px",
               height: "fit-content",
               width: "fit-content",
-              padding: "0vw 1vw",
+              padding: "0vw 1.8vh",
               duration: 0.5,
               ease: "back.out",
             });
@@ -574,7 +586,7 @@ function wrapChar(selector, spanClass) {
         post.addEventListener("mouseleave", () => {
           if (isDarkMode) {
             gsap.to("#post h2", {
-              color: brown,
+              color: darkbrown,
               duration: 0.2,
             });
             gsap.to(post, {
@@ -597,7 +609,7 @@ function wrapChar(selector, spanClass) {
       }
       //links animation
       {
-        const links = document.querySelectorAll("#link");
+        const links = document.querySelectorAll(".link");
 
         links.forEach((link) => {
           link.addEventListener("mouseenter", () => {
@@ -718,7 +730,7 @@ function wrapChar(selector, spanClass) {
         chars.forEach((char) => {
           char.addEventListener("mouseenter", () => {
             gsap.to(char, {
-              y: "-1vw",
+              y: "-1.8vh",
               color: sun,
               scale: 1.1,
               duration: 0.3,
@@ -758,13 +770,13 @@ function wrapChar(selector, spanClass) {
             repeat: -1,
           }
         );
-        tl.from("#page1bg", {
+        tl.from("#herosectionbg", {
           x:"-50vw",
           scale: 0,
           opacity: 0,
           duration: 1,
         });
-        tl.from("#link", {
+        tl.from(".link", {
           y: "-8vw",
           duration: 1,
           stagger: 0.1,
@@ -820,3 +832,4 @@ function wrapChar(selector, spanClass) {
     }
   });
 }
+
