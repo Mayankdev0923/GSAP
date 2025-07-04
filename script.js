@@ -203,18 +203,22 @@ function setTheme(isDark) {
   });
 
   //uimodeswitch
-  {document.querySelector("#darkmode").addEventListener("click", () => {
-  setTheme(true);
-});
+  {
+    document.querySelector("#darkmode").addEventListener("click", () => {
+      setTheme(true);
+    });
 
-document.querySelector("#lightmode").addEventListener("click", () => {
-  setTheme(false);
-});
-}
+    document.querySelector("#lightmode").addEventListener("click", () => {
+      setTheme(false);
+    });
+  }
 
   window.addEventListener("load", () => {
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-setTheme(prefersDark);
+    // const prefersDark =
+    //   window.matchMedia &&
+    //   window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // setTheme(prefersDark);
+
     if (window.matchMedia("(max-width: 768px)").matches) {
       wrapEachChar(".herotext", "char");
       wrapEachChar(".herotextsm", "char");
@@ -274,7 +278,7 @@ setTheme(prefersDark);
         duration: 0.5,
         ease: "back.out",
       });
-      tl.from(["#navicon",".uimode"], {
+      tl.from(["#navicon", ".uimode"], {
         y: 50,
         duration: 0.5,
         stagger: -0.1,
@@ -296,7 +300,542 @@ setTheme(prefersDark);
           });
         },
       });
-    } else {
+    }
+    else if (window.matchMedia("(min-width: 769px) and (max-width: 1080px) and (min-height: 550px)").matches){
+      // Only wrap the main herotext
+      wrapEachChar("#herotext", "char-sm");
+      wrapEachChar("#herotextsm1", "char-sm");
+      wrapChar("#resume h2", "resume-sm");
+
+      //herotext cursor animation
+      {
+        document
+          .getElementById("herotext")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor", {
+              scale: 1.5,
+            });
+          });
+
+        document
+          .getElementById("herotext")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor", {
+              scale: 1,
+            });
+          });
+      }
+
+      //myimage cursor animation
+      {
+        document
+          .getElementById("myimage")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Mayank Sharma",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "fit-content",
+              padding: "0vh 1.7vh",
+              duration: 1,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .getElementById("myimage")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 1,
+              ease: "back.out",
+            });
+          });
+      }
+
+      //navicon cursor text animation
+      {
+        document
+          .querySelector(".githubnav")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Github",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "fit-content",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .querySelector(".githubnav")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .querySelector(".linkedinnav")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Linked In",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "fit-content",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .querySelector(".linkedinnav")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+      }
+
+      //links cursor text animation
+      {
+        var links = document.querySelectorAll(".link");
+        links.forEach((link) => {
+          link.addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Go To Section",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "fit-content",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+          link.addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+        });
+      }
+
+      //uimode cursor animation
+      {
+        document
+          .querySelector("#lightmode")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Light Mode",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "fit-content",
+              padding: "0vw 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .querySelector("#lightmode")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .querySelector("#darkmode")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Dark Mode",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "fit-content",
+              padding: "0vw 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .querySelector("#darkmode")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+      }
+
+      //custom cursor
+      window.addEventListener("mousemove", (dets) => {
+        gsap.to("#cursor", {
+          opacity: 1,
+          x: dets.clientX,
+          y: dets.clientY,
+        });
+      });
+
+      //resume animation
+      {
+        resume.addEventListener("mouseenter", () => {
+          gsap.to(resume, {
+            scale: 1.1,
+            backgroundColor: orange,
+            duration: 0.4,
+          });
+          gsap.to(".resume-sm", {
+            y: "2vw",
+            duration: 0.2,
+            stagger: 0.05,
+            onStart: () => {
+              gsap.fromTo(
+                ".resume-sm",
+                {
+                  y: "-4vw",
+                  delay: 0.2,
+                },
+                {
+                  y: "0vw",
+                  duration: 0.2,
+                  delay: 0.2,
+                  stagger: 0.05,
+                }
+              );
+            },
+          });
+        });
+        resume.addEventListener("mouseleave", () => {
+          gsap.to(resume, {
+            scale: 1,
+            backgroundColor: pink,
+            duration: 0.4,
+          });
+        });
+      }
+      //post animation
+      {
+        post.addEventListener("mouseenter", () => {
+          gsap.to(post, {
+            scale: 1.1,
+            backgroundColor: darkblue,
+            zIndex: 9,
+            duration: 0.2,
+          });
+          gsap.to("#post h2", {
+            color: beige,
+            duration: 0.2,
+          });
+        });
+        post.addEventListener("mouseleave", () => {
+          if (isDarkMode) {
+            gsap.to("#post h2", {
+              color: darkbrown,
+              duration: 0.2,
+            });
+            gsap.to(post, {
+              scale: 1,
+              backgroundColor: beige,
+              duration: 0.4,
+            });
+          } else {
+            gsap.to("#post h2", {
+              color: beige,
+              duration: 0.2,
+            });
+            gsap.to(post, {
+              scale: 1,
+              backgroundColor: brown,
+              duration: 0.4,
+            });
+          }
+        });
+      }
+      //links animation
+      {
+        const links = document.querySelectorAll(".link");
+
+        links.forEach((link) => {
+          link.addEventListener("mouseenter", () => {
+            gsap.to(link, {
+              scale: 1.1,
+              color: orange,
+              scale: 1.1,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          });
+
+          link.addEventListener("mouseleave", () => {
+            if (isDarkMode) {
+              gsap.to(link, {
+                scale: 1,
+                color: beige,
+                scale: 1,
+                duration: 0.3,
+                ease: "back.in(2)",
+              });
+            } else {
+              gsap.to(link, {
+                scale: 1,
+                color: brown,
+                scale: 1,
+                duration: 0.3,
+                ease: "back.in(2)",
+              });
+            }
+          });
+        });
+      }
+      //navicons color animation
+      {
+        const navis = document.querySelectorAll("#navicon");
+
+        navis.forEach((navi) => {
+          navi.addEventListener("mouseenter", () => {
+            const path = navi.querySelector("path");
+            gsap.to(navi, {
+              scale: 1.1,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+            gsap.to(path, {
+              fill: orange,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          });
+
+          navi.addEventListener("mouseleave", () => {
+            const path = navi.querySelector("path");
+            gsap.to(navi, {
+              scale: 1,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+            if (isDarkMode) {
+              gsap.to(path, {
+                fill: beige,
+                duration: 0.3,
+                ease: "back.out(2)",
+              });
+            } else {
+              gsap.to(path, {
+                fill: brown,
+                duration: 0.3,
+                ease: "back.out(2)",
+              });
+            }
+          });
+        });
+      }
+
+      //uimode color animation
+      {
+        const navis = document.querySelectorAll("#darkmode");
+
+        navis.forEach((navi) => {
+          navi.addEventListener("mouseenter", () => {
+            const path = navi.querySelector("path");
+            gsap.to(navi, {
+              scale: 1.15,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+            gsap.to(path, {
+              fill: lightblue,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          });
+
+          navi.addEventListener("mouseleave", () => {
+            const path = navi.querySelector("path");
+            gsap.to(navi, {
+              scale: 1,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+            gsap.to(path, {
+              fill: brown,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          });
+        });
+      }
+
+      //herotext animation
+      {
+        const chars = document.querySelectorAll(".char-sm");
+
+        chars.forEach((char) => {
+          char.addEventListener("mouseenter", () => {
+            gsap.to(char, {
+              y: "-1.8vh",
+              color: sun,
+              scale: 1.1,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          });
+
+          char.addEventListener("mouseleave", () => {
+            gsap.to(char, {
+              y: "0vw",
+              color: lightgrey,
+              scale: 1,
+              duration: 0.3,
+              ease: "back.in(2)",
+            });
+          });
+        });
+      }
+
+      //start & cloud animation
+      {
+        var tl = gsap.timeline();
+
+        gsap.fromTo(
+          ".cloud2",
+          {
+            x: "0.4vw",
+            y: "0.3vw",
+          },
+          {
+            x: "-0.5vw",
+            y: "0.5vw",
+            duration: 2,
+            yoyo: true,
+            stagger: 0.6,
+            ease: "back.in",
+            repeat: -1,
+          }
+        );
+        tl.from("#herosectionbg", {
+          x: "-50vw",
+          scale: 0,
+          opacity: 0,
+          duration: 1,
+        });
+        tl.from(".link", {
+          y: "-8vw",
+          duration: 1,
+          stagger: 0.1,
+          ease: "back.out",
+          onComplete: () => {
+            gsap.fromTo(
+              "#myimage",
+              {
+                opacity: 0,
+                y: "30vw",
+              },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 2,
+                delay: 1,
+                ease: "back.out(2)",
+              }
+            );
+          },
+        });
+        tl.from("#navline", {
+          width: "0%",
+          duration: 0.5,
+          onComplete: () => {
+            gsap.to(".char-sm", {
+              opacity: 1,
+              y: "0vw",
+              duration: 2,
+              stagger: 0.2,
+              ease: "back.out",
+            });
+          },
+        });
+        tl.from(["#navicon", ".uimode"], {
+          y: "8vw",
+          duration: 1,
+          stagger: -0.2,
+          ease: "back.out",
+        });
+        tl.from(".bottomlink", {
+          y: "5vw",
+          display:"none",
+          duration: 1,
+          ease: "back.out",
+          stagger: 0.2,
+        });
+        tl.from(".cloud2", {
+          opacity: 0,
+          y: "-2vw",
+          duration: 1,
+        });
+      }
+    }
+     else {
       // Only wrap the main herotext
       wrapEachChar("#herotext", "char-sm");
       wrapChar("#resume h2", "resume-sm");
@@ -623,24 +1162,23 @@ setTheme(prefersDark);
           });
 
           link.addEventListener("mouseleave", () => {
-           if(isDarkMode){
-             gsap.to(link, {
-              scale: 1,
-              color: beige,
-              scale: 1,
-              duration: 0.3,
-              ease: "back.in(2)",
-            });
-           }
-           else{
-             gsap.to(link, {
-              scale: 1,
-              color: brown,
-              scale: 1,
-              duration: 0.3,
-              ease: "back.in(2)",
-            });
-           }
+            if (isDarkMode) {
+              gsap.to(link, {
+                scale: 1,
+                color: beige,
+                scale: 1,
+                duration: 0.3,
+                ease: "back.in(2)",
+              });
+            } else {
+              gsap.to(link, {
+                scale: 1,
+                color: brown,
+                scale: 1,
+                duration: 0.3,
+                ease: "back.in(2)",
+              });
+            }
           });
         });
       }
@@ -670,19 +1208,18 @@ setTheme(prefersDark);
               duration: 0.3,
               ease: "back.out(2)",
             });
-            if(isDarkMode){
+            if (isDarkMode) {
               gsap.to(path, {
-              fill: beige,
-              duration: 0.3,
-              ease: "back.out(2)",
-            });
-            }
-            else{
+                fill: beige,
+                duration: 0.3,
+                ease: "back.out(2)",
+              });
+            } else {
               gsap.to(path, {
-              fill: brown,
-              duration: 0.3,
-              ease: "back.out(2)",
-            });
+                fill: brown,
+                duration: 0.3,
+                ease: "back.out(2)",
+              });
             }
           });
         });
@@ -771,7 +1308,7 @@ setTheme(prefersDark);
           }
         );
         tl.from("#herosectionbg", {
-          x:"-50vw",
+          x: "-50vw",
           scale: 0,
           opacity: 0,
           duration: 1,
@@ -832,4 +1369,5 @@ setTheme(prefersDark);
     }
   });
 }
+
 
