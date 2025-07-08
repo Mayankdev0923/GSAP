@@ -6,6 +6,7 @@
   --sun: #ffe700;
   --light-blue: #a1b2ff;
   --darkbrown: #966e50;
+  --darkblue:#5271ff;
   --orange: #f9a01b;
   --dark-gray: #545454;
 }
@@ -74,7 +75,7 @@ body {
     width: 100%;
     align-items: center;
     padding: 1vw 4vw;
-    padding-top: 2vw;
+    padding-top: 4vw;
     justify-content: space-between;
   }
 
@@ -233,6 +234,7 @@ body {
     padding: 0 1.5vw;
     background-color: var(--darkbrown);
     border-radius: 2vw;
+    cursor: pointer;
   }
   #post h2 {
     font-family: "norwester";
@@ -276,6 +278,9 @@ body {
   }
 
   #myimage {
+    display: block;
+    visibility: visible;
+    opacity: 1;
     position: absolute;
     opacity: 0;
     width: 42vw; /* take it out of flow */
@@ -642,6 +647,7 @@ body {
     height: 100%;
     padding: 2vw 4vw;
     position: relative;
+    overflow: hidden;
   }
   .sectioncontainer {
     height: 100%;
@@ -693,7 +699,6 @@ body {
     height: 37vw;
     width: 100%;
     display: flex;
-    overflow: hidden;
     flex-direction: column;
     justify-content: center;
     gap: 1vw;
@@ -705,6 +710,7 @@ body {
     gap: 1vw;
   }
   .bentocol {
+    z-index: 1;
     width: 49%;
     display: flex;
     gap: 1vw;
@@ -767,6 +773,7 @@ body {
     color: var(--darkbrown);
     transform: translateY(1vw);
   }
+
   #projecttext {
     font-size: 3vw;
     font-family: "brick";
@@ -781,6 +788,9 @@ body {
     line-height: 0;
     color: var(--light-blue);
   }
+  .relative{
+    position: relative;
+  }
 
   .badge {
     background-image: url("assets/section2/badge.png");
@@ -788,6 +798,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
   }
 
   #readytext {
@@ -798,10 +813,12 @@ body {
   }
 
   #circletext {
+    pointer-events: none;
     font-size: 2vw;
     font-family: "norwester";
     color: #fff;
     text-align: center;
+    z-index:2;
   }
   #skillnumber {
     font-size: 4vw;
@@ -889,7 +906,8 @@ body {
     position: absolute;
     height: 7vw;
     top: 10%;
-    right: 15%;
+    right: 10%;
+    z-index: 99;
   }
   #homeicon {
     fill: var(--orange);
@@ -1124,9 +1142,10 @@ body {
   }
   #cloud4{
     position: absolute;
-    height: 27vw;
-    top: 14%;
+    height: 22vw;
+    top: 12%;
     right: 5%;
+    z-index: 10;
   }
   
 }

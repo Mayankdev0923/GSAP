@@ -15,118 +15,139 @@ const orange = "#f9a01b";
 const darkblue = "#5271ff";
 const darkbrown = "#966e50";
 
-function wrapEachChar(selector, spanClass) {
-  const blocks = document.querySelectorAll(selector);
+//functions
+{
+  function wrapEachChar(selector, spanClass) {
+    const blocks = document.querySelectorAll(selector);
 
-  blocks.forEach((block) => {
-    const lines = block.querySelectorAll(".line");
+    blocks.forEach((block) => {
+      const lines = block.querySelectorAll(".line");
 
-    lines.forEach((line) => {
-      const text = line.textContent;
-      line.textContent = "";
+      lines.forEach((line) => {
+        const text = line.textContent;
+        line.textContent = "";
 
-      text.split("").forEach((char) => {
-        const span = document.createElement("span");
-        span.textContent = char;
-        span.classList.add(spanClass);
-        line.appendChild(span);
+        text.split("").forEach((char) => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.classList.add(spanClass);
+          line.appendChild(span);
+        });
       });
     });
-  });
-}
-function wrapChar(selector, spanClass) {
-  const el = document.querySelector(selector);
-  if (!el) return;
+  }
+  function wrapChar(selector, spanClass) {
+    const el = document.querySelector(selector);
+    if (!el) return;
 
-  const text = el.textContent;
-  el.textContent = ""; // Clear original content
+    const text = el.textContent;
+    el.textContent = ""; // Clear original content
 
-  text.split("").forEach((char) => {
-    const span = document.createElement("span");
-    span.textContent = char === " " ? "\u00A0" : char; // Preserve space
-    span.classList.add(spanClass);
-    el.appendChild(span);
-  });
-}
-function setTheme(isDark) {
-  if (isDark) {
-    // Dark mode
-    gsap.to("body", {
-      backgroundColor: brown,
-      duration: 1,
+    text.split("").forEach((char) => {
+      const span = document.createElement("span");
+      span.textContent = char === " " ? "\u00A0" : char; // Preserve space
+      span.classList.add(spanClass);
+      el.appendChild(span);
     });
-    gsap.to(["#post h2", "#post2 h2"], {
-      color: brown,
-      duration: 1,
-    });
-    gsap.to(["#navline", "#post", "#post2"], {
-      backgroundColor: beige,
-      duration: 1,
-    });
-    gsap.to(".link", {
-      color: beige,
-      duration: 1,
-    });
-    gsap.to("#menublur", {
-      backgroundColor: brown,
-      duration: 1,
-    });
-    gsap.to("#darkmode", {
-      opacity: 0,
-      display: "none",
-      duration: 1,
-      onComplete: () => {
-        gsap.to("#lightmode", {
-          opacity: 1,
-          display: "inline-block",
-          duration: 1,
-        });
-      },
-    });
-    gsap.to(["#navicon path", "#sidemenuopenicon", "#sidemenucloseicon"], {
-      fill: beige,
-      duration: 1,
-    });
-    isDarkMode = true;
-  } else {
-    // Light mode
-    gsap.to("body", {
-      backgroundColor: beige,
-      duration: 1,
-    });
-    gsap.to(["#post h2", "#post2 h2"], {
-      color: beige,
-      duration: 1,
-    });
-    gsap.to(["#navline", "#post", "#post2"], {
-      backgroundColor: brown,
-      duration: 1,
-    });
-    gsap.to(".link", {
-      color: brown,
-      duration: 1,
-    });
-    gsap.to("#menublur", {
-      backgroundColor: beige,
-      duration: 1,
-    });
-    gsap.to("#lightmode", {
-      opacity: 0,
-      display: "none",
-      duration: 1,
-      onComplete: () => {
-        gsap.to("#darkmode", {
-          opacity: 1,
-          display: "inline-block",
-          duration: 1,
-        });
-      },
-    });
-    gsap.to(["#navicon path", "#sidemenuopenicon", "#sidemenucloseicon"], {
-      fill: brown,
-      duration: 1,
-    });
-    isDarkMode = false;
+  }
+  function setTheme(isDark) {
+    if (isDark) {
+      // Dark mode
+      gsap.to("body", {
+        backgroundColor: brown,
+        duration: 1,
+      });
+      gsap.to(["#post h2", "#post2 h2"], {
+        color: brown,
+        duration: 1,
+      });
+      gsap.to(["#navline", "#post", "#post2"], {
+        backgroundColor: beige,
+        duration: 1,
+      });
+      gsap.to(".link", {
+        color: beige,
+        duration: 1,
+      });
+      gsap.to("#menublur", {
+        backgroundColor: brown,
+        duration: 1,
+      });
+      gsap.to("#darkmode", {
+        opacity: 0,
+        display: "none",
+        duration: 1,
+        onComplete: () => {
+          gsap.to("#lightmode", {
+            opacity: 1,
+            display: "inline-block",
+            duration: 1,
+          });
+        },
+      });
+      gsap.to(["#navicon path", "#sidemenuopenicon", "#sidemenucloseicon"], {
+        fill: beige,
+        duration: 1,
+      });
+
+      gsap.to(".brownbg", {
+        backgroundColor: "#545454",
+        duration: 1,
+      });
+      gsap.to("#skilltitle h1", {
+        color: beige,
+        duration: 1,
+      });
+      isDarkMode = true;
+    } else {
+      // Light mode
+      gsap.to("body", {
+        backgroundColor: beige,
+        duration: 1,
+      });
+      gsap.to(["#post h2", "#post2 h2"], {
+        color: beige,
+        duration: 1,
+      });
+      gsap.to(["#navline", "#post", "#post2"], {
+        backgroundColor: brown,
+        duration: 1,
+      });
+      gsap.to(".link", {
+        color: brown,
+        duration: 1,
+      });
+      gsap.to("#menublur", {
+        backgroundColor: beige,
+        duration: 1,
+      });
+      gsap.to("#lightmode", {
+        opacity: 0,
+        display: "none",
+        duration: 1,
+        onComplete: () => {
+          gsap.to("#darkmode", {
+            opacity: 1,
+            display: "inline-block",
+            duration: 1,
+          });
+        },
+      });
+      gsap.to(["#navicon path", "#sidemenuopenicon", "#sidemenucloseicon"], {
+        fill: brown,
+        duration: 1,
+      });
+      gsap.to(".brownbg", {
+        backgroundColor: "#b6825b",
+        duration: 1,
+      });
+      gsap.to("#skilltitle h1", {
+        color: orange,
+        duration: 1,
+      });
+
+      isDarkMode = false;
+    }
   }
 }
 
@@ -214,10 +235,10 @@ function setTheme(isDark) {
   }
 
   window.addEventListener("load", () => {
-    // const prefersDark =
-    //   window.matchMedia &&
-    //   window.matchMedia("(prefers-color-scheme: dark)").matches;
-    // setTheme(prefersDark);
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark);
 
     if (window.matchMedia("(max-width: 768px)").matches) {
       wrapEachChar(".herotext", "char");
@@ -300,8 +321,11 @@ function setTheme(isDark) {
           });
         },
       });
-    }
-    else if (window.matchMedia("(min-width: 769px) and (max-width: 1080px) and (min-height: 550px)").matches){
+    } else if (
+      window.matchMedia(
+        "(min-width: 769px) and (max-width: 1080px) and (min-height: 550px)"
+      ).matches
+    ) {
       // Only wrap the main herotext
       wrapEachChar("#herotext", "char-sm");
       wrapEachChar("#herotextsm1", "char-sm");
@@ -823,7 +847,7 @@ function setTheme(isDark) {
         });
         tl.from(".bottomlink", {
           y: "5vw",
-          display:"none",
+          display: "none",
           duration: 1,
           ease: "back.out",
           stagger: 0.2,
@@ -834,8 +858,7 @@ function setTheme(isDark) {
           duration: 1,
         });
       }
-    }
-     else {
+    } else {
       // Only wrap the main herotext
       wrapEachChar("#herotext", "char-sm");
       wrapChar("#resume h2", "resume-sm");
@@ -875,6 +898,9 @@ function setTheme(isDark) {
               duration: 1,
               ease: "back.out",
             });
+            gsap.to("#myimage", {
+              scale: 1.05,
+            });
           });
 
         document
@@ -890,6 +916,9 @@ function setTheme(isDark) {
               padding: 0,
               duration: 1,
               ease: "back.out",
+            });
+            gsap.to("#myimage", {
+              scale: 1,
             });
           });
       }
@@ -1146,6 +1175,66 @@ function setTheme(isDark) {
           }
         });
       }
+      //post and resume cursor text animation
+      {
+        document.querySelector("#post").addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "This is what I do",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "fit-content",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+        document.querySelector("#post").addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+      }
+      {
+        document.querySelector("#resume").addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Download & take a better look",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "fit-content",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+        document.querySelector("#resume").addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+      }
+
       //links animation
       {
         const links = document.querySelectorAll(".link");
@@ -1303,7 +1392,7 @@ function setTheme(isDark) {
             duration: 2,
             yoyo: true,
             stagger: 0.6,
-            ease: "back.in",
+            ease: "power1.inOut",
             repeat: -1,
           }
         );
@@ -1356,6 +1445,7 @@ function setTheme(isDark) {
         });
         tl.from(".bottomlink", {
           y: "5vw",
+          opacity: 0,
           duration: 1,
           ease: "back.out",
           stagger: 0.2,
@@ -1369,5 +1459,592 @@ function setTheme(isDark) {
     }
   });
 }
+//section2
+{
+  if (window.matchMedia("(max-width: 768px)").matches) {
+  } else {
+    //hover animations
+    {
+      document.querySelector(".graybg").addEventListener("mouseenter", () => {
+        gsap.to(".graybg", {
+          scale: 1.03,
+          backgroundColor: "#ffe700",
+        });
+      });
+      document.querySelector(".graybg").addEventListener("mouseleave", () => {
+        gsap.to(".graybg", {
+          scale: 1,
+          backgroundColor: "#e1e1e1",
+        });
+      });
+    }
+    {
+      document.querySelector(".aimlcont").addEventListener("mouseenter", () => {
+        gsap.to(".aimlcont", {
+          scale: 1.03,
+          backgroundColor: "#a1b2ff",
+        });
+        gsap.to(".aimlcont h2", {
+          color: "#fff",
+        });
+      });
+      document.querySelector(".aimlcont").addEventListener("mouseleave", () => {
+        gsap.to(".aimlcont", {
+          scale: 1,
+          backgroundColor: "#fff",
+        });
+        gsap.to(".aimlcont h2", {
+          color: "#a1b2ff",
+        });
+      });
+    }
+    {
+      document
+        .querySelector(".readycont")
+        .addEventListener("mouseenter", () => {
+          gsap.to(".readycont", {
+            scale: 1.03,
+            backgroundColor: "#fff",
+          });
+          gsap.to(".readycont h2", {
+            color: "#a1b2ff",
+          });
+        });
+      document
+        .querySelector(".readycont")
+        .addEventListener("mouseleave", () => {
+          gsap.to(".readycont", {
+            scale: 1,
+            backgroundColor: "#a1b2ff",
+          });
+          gsap.to(".readycont h2", {
+            color: "#fff",
+          });
+        });
+    }
+    {
+      document.querySelector(".badge").addEventListener("mouseenter", () => {
+        gsap.to(".badge", {
+          scale: 1.1,
+        });
+      });
+      document.querySelector(".badge").addEventListener("mouseleave", () => {
+        gsap.to(".badge", {
+          scale: 1,
+        });
+      });
+    }
+    {
+      document.querySelector(".brownbg").addEventListener("mouseenter", () => {
+        gsap.to(".brownbg", {
+          scale: 1.04,
+        });
+      });
+      document.querySelector(".brownbg").addEventListener("mouseleave", () => {
+        gsap.to(".brownbg", {
+          scale: 1,
+        });
+      });
+    }
+    {
+      document.querySelector(".orangebg").addEventListener("mouseenter", () => {
+        gsap.to(".orangebg", {
+          scale: 1.04,
+        });
+      });
+      document.querySelector(".orangebg").addEventListener("mouseleave", () => {
+        gsap.to(".orangebg", {
+          scale: 1,
+        });
+      });
+    }
 
+    //cursor text animations
+    {
+      document
+        .querySelector(".graybg")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "I made various project in web dev, backend, c++ etc. View my github or resume for more info",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
 
+      document
+        .querySelector(".graybg")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".aimlcont")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "I have keen interest in integrating Artificial Intelligence to solve real life problems. I am passionate about machine learning and it's techniques..",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".aimlcont")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".readycont")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "I am ready to continue my work as an AI Engineer/Intern.",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".readycont")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".badge")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "I have completed my internships from AICTE certified institutes.",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".badge")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".orangebg")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "I am equipped with skills such as Python, Machine Learning, CPP, Data Structures and Web Developement. I have experience working and collaborating with teams and a corporate environment.",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".orangebg")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".brownbg")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "I am known to various IDEs like VS Code, Google Colab, Pycharm, Cursor, etc. I also have major experience with Database Management tools like MongoDB Atlas, MySQL,etc.",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".brownbg")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".cgpascore")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Boosting through my studies and syllabus with current CGPA of 9.1",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".cgpascore")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector("#patterndiv")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "This if for decoration only. XD",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector("#patterndiv")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector("#homeicon")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Go to Homepage",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "fit-content",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector("#homeicon")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+  }
+}
+
+//transition animations
+{
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const s2s = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#skillsection",
+        scroller: "body",
+        end: "top 0%",
+        start: "top 70%",
+        scrub: true,
+      },
+    });
+
+    s2s.from("#skilltitle", {
+      opacity: 0,
+      duration: 1,
+      scale: 0.5,
+    });
+    s2s.from("#navline2", {
+      width: 0,
+      duration: 0.5,
+    });
+    s2s.from("#cloud4", {
+      x: 30,
+      opacity: 0,
+      duration: 0.5,
+      ease: "back.out()",
+      onComplete: () => {
+        gsap.to("#cloud4", {
+          x: "-14vw",
+          duration: 8,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s2s.from(".bentocol", {
+      scale: 1,
+      opacity: 0,
+      y: 200,
+      stagger: 0.7,
+      ease: "power1.out",
+      onStart: () => {
+        gsap.to(".badge", {
+          rotate: 360,
+          duration: 10,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+        gsap.to(".squishy", {
+          width: "105%",
+          yoyo: true,
+          stagger: 0.5,
+          delay: 0.5,
+          duration: 1,
+          ease: "power.inOut",
+          repeat: -1,
+        });
+        gsap.to("#cgpanumber", {
+          color: "#b6825b",
+          duration: 2,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+        gsap.to("#cgpatext", {
+          color: "#545454",
+          duration: 2,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+        gsap.to(".graybg", {
+          width: "90%",
+          yoyo: true,
+          repeat: 1,
+        });
+      },
+    });
+    s2s.from("#skillsectionbg", {
+      opacity: 0,
+    });
+    s2s.from("#homeicon", {
+      y: 20,
+      opacity: 0,
+      delay: 0.5,
+      duration: 0.5,
+    });
+  } else {
+    gsap.from("#skilltitle", {
+      x: 800,
+      scale: 3,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: "#skillsection",
+        scroller: "body",
+        end: "top 0%",
+        start: "top 90%",
+        scrub: true,
+      },
+    });
+
+    const s2s = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#skillsection",
+        scroller: "body",
+        end: "top -70%",
+        start: "top 0%",
+        pin: true,
+        scrub: true,
+      },
+    });
+
+    s2s.from("#navline2", {
+      width: 0,
+      duration: 0.5,
+    });
+    s2s.from("#cloud4", {
+      x: 30,
+      opacity: 0,
+      duration: 0.5,
+      ease: "back.out()",
+      onComplete: () => {
+        gsap.to("#cloud4", {
+          x: "-4vw",
+          duration: 8,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s2s.from(".bentocol", {
+      scale: 1,
+      opacity: 0,
+      y: 200,
+      stagger: 0.7,
+      duration: 1,
+      ease: "power1.out",
+      onStart: () => {
+        gsap.to(".badge", {
+          rotate: 360,
+          duration: 10,
+          repeat: 1,
+          ease: "power1.inOut",
+        });
+        gsap.to(".squishy", {
+          width: "105%",
+          yoyo: true,
+          stagger: 0.5,
+          delay: 0.5,
+          duration: 1,
+          ease: "power.inOut",
+          repeat: 10,
+        });
+        gsap.to("#cgpanumber", {
+          color: "#b6825b",
+          duration: 2,
+          yoyo: true,
+          repeat: 5,
+          ease: "power1.inOut",
+        });
+        gsap.to("#cgpatext", {
+          color: "#545454",
+          duration: 2,
+          yoyo: true,
+          repeat: 5,
+          ease: "power1.inOut",
+        });
+        gsap.to(".graybg", {
+          width: "90%",
+          yoyo: true,
+          repeat: 1,
+        });
+      },
+    });
+    s2s.from("#skillsectionbg", {
+      opacity: 0,
+    });
+    s2s.from("#homeicon", {
+      y: 20,
+      opacity: 0,
+      delay: 0.5,
+      duration: 0.5,
+    });
+  }
+}
