@@ -654,7 +654,7 @@ body {
     height: 100%;
   }
   #skilltitle {
-    padding: 2vw 0;
+    padding: 1vw 0;
     width: 100%;
     height: 15vh;
     display: flex;
@@ -666,10 +666,15 @@ body {
     font-size: 4vw;
     font-family: "brick";
   }
-
-  #navlinewrap {
-    display: flex;
+  .smvisible {
+    display: none;
   }
+  .heightfitcontent{
+    height: fit-content;
+    padding: none;
+  }
+
+  
   #navline2 {
     height: 0.4vw;
     margin-bottom: 1vw;
@@ -685,7 +690,7 @@ body {
   }
 
   #bentogrid {
-    height: 80%;
+    height: 37vw;
     width: 100%;
     display: flex;
     overflow: hidden;
@@ -707,7 +712,7 @@ body {
   .bentodatadiv {
     height: 100%;
     width: 100%;
-    border-radius: 50px;
+    border-radius: 4vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -777,6 +782,14 @@ body {
     color: var(--light-blue);
   }
 
+  .badge {
+    background-image: url("assets/section2/badge.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
   #readytext {
     font-size: 3vw;
     font-family: "brick";
@@ -815,14 +828,14 @@ body {
     font-family: "brick";
     line-height: 0;
     color: #fff;
-    transform: translateY(-1.5vw);
+    transform: translateY(-1vw);
   }
   #toolname {
     font-size: 1.5vw;
     font-family: "norwester";
     line-height: 0;
     color: var(--beige);
-    transform: translateY(-1vw);
+    transform: translateY(-0.5vw);
   }
   #cgpanumber {
     font-size: 6vw;
@@ -857,7 +870,7 @@ body {
   }
 
   #homebuttonsec {
-    height: 100%;
+    height: 37vw;
     width: 15%;
     display: flex;
     flex-direction: column;
@@ -874,9 +887,9 @@ body {
   }
   #cloud4 {
     position: absolute;
-    height: 15vh;
-    top: 7%;
-    right: 10%;
+    height: 7vw;
+    top: 10%;
+    right: 15%;
   }
   #homeicon {
     fill: var(--orange);
@@ -884,4 +897,236 @@ body {
     width: 6vw;
     cursor: pointer;
   }
+}
+@media (max-width: 768px) {
+  #homebuttonsec {
+    display: none;
+  }
+  #skillcontainer {
+    width: 100%;
+    height: fit-content;
+    padding: 4vw 2vw;
+  }
+  #skilltitle {
+    padding: 1vw 0;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  #skillsection {
+    height: fit-content;
+    padding: 2vw 4vw;
+    position: relative;
+  }
+  .smvisible {
+    display: block;
+  }
+  .sminvisible {
+    display: none;
+  }
+  #skilltitle h1 {
+    color: var(--orange);
+    font-size: 14vw;
+    font-family: "brick";
+    margin: 0.25;
+  }
+   #navline2 {
+    height: 1vw;
+    margin-bottom: 5vw;
+    border-radius: 2rem; /* Optional: keeps ends rounded */
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--orange) 0,
+      var(--orange) 1.6vw,
+      transparent 0.4vw,
+      transparent 2vw
+    );
+    background-repeat: repeat-x;
+  }
+
+  #bentogrid {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2vw;
+  }
+  .bentorow {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+  }
+  .bentocol {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 2vw;
+  }
+  .bentodatadiv {
+    height: 50vw;
+    width: 100%;
+    border-radius: 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2vw;
+    padding: 1vw;
+    z-index: 2;
+  }
+  .aimldiv {
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    padding: 0vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    justify-content: center;
+  }
+  #cgpablock {
+    flex-direction: row;
+  }
+  .cgpadiv {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1vw;
+  }
+  .textcenter {
+    justify-content: center;
+    padding-right: 2vw;
+  }
+  .cgpadata {
+    height: fit-content;
+    width: 100%;
+    padding-left: 4vw;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  #patterndiv {
+    align-items: end;
+  }
+  .cgpadiv img {
+    width: 80%;
+  }
+
+  #projectnumber {
+    font-size: 20vw;
+    font-family: "brick";
+    line-height: 0;
+    color: var(--darkbrown);
+    transform: translateY(1vw);
+  }
+  #projecttext {
+    font-size: 8vw;
+    font-family: "brick";
+    line-height: 0.2;
+    color: #fff;
+    transform: translateY(-3vw);
+  }
+
+  #aimltext {
+    font-size: 8vw;
+    font-family: "brick";
+    line-height: 0;
+    color: var(--light-blue);
+  }
+
+  .badge {
+    background-image: url("assets/section2/badge.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  #readytext {
+    font-size: 8vw;
+    font-family: "brick";
+    line-height: 0;
+    color: #fff;
+  }
+
+  #circletext {
+    font-size: 6vw;
+    font-family: "norwester";
+    color: #fff;
+    text-align: center;
+  }
+   #skillnumber {
+    font-size: 14vw;
+    font-family: "brick";
+    line-height: 0;
+    color: var(--dark-gray);
+  }
+  #skilltext {
+    font-size: 8vw;
+    font-family: "brick";
+    line-height: 0;
+    color: #fff;
+    transform: translateY(-5vw);
+  }
+  #skillname {
+    font-size: 3vw;
+    font-family: "brick";
+    line-height: 0;
+    color: var(--darkbrown);
+    transform: translateY(-5vw);
+  }
+  #tooltext {
+    font-size: 8vw;
+    font-family: "brick";
+    line-height: 0;
+    color: #fff;
+    transform: translateY(-2vw);
+  }
+  #toolname {
+    font-size: 4vw;
+    font-family: "norwester";
+    line-height: 0;
+    color: var(--beige);
+    transform: translateY(-1vw);
+    overflow-wrap: break-word;
+  }
+  #cgpanumber {
+    font-size: 14vw;
+    font-family: "brick";
+    line-height: 0;
+    color: var(--dark-gray);
+  }
+  #cgpatext {
+    font-size: 10vw;
+    font-family: "brick";
+    line-height: 0;
+    color: var(--brown);
+    transform: translateY(-2vw);
+  }
+  #patterndiv {
+    align-items: center;
+  }
+  
+  .orangebg{
+    gap: 0;
+  }
+  .brownbg{
+    gap:0;
+  }
+  #cloud4{
+    position: absolute;
+    height: 27vw;
+    top: 14%;
+    right: 5%;
+  }
+  
 }
