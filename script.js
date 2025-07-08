@@ -17,6 +17,44 @@ const darkbrown = "#966e50";
 
 //functions
 {
+  function closemenu() {
+    const tl = gsap.timeline();
+
+    tl.to(menuCloseButton, {
+      opacity: 0,
+      duration: 0.5,
+    });
+    tl.to(".link", {
+      x: "-80vw",
+      duration: 1,
+      stagger: -0.1,
+      onComplete: () => {
+        gsap.set(".link", { display: "none" });
+      },
+    });
+    gsap.to(menuBlur, {
+      x: "-80vw",
+      opacity: 0.6,
+      duration: 0.4,
+      delay: 1,
+      ease: "power.in",
+      onComplete: () => {
+        gsap.set(menuBlur, { display: "none" });
+        gsap.fromTo(
+          menuButton,
+          {
+            rotate: -45,
+          },
+          {
+            display: "inline-block",
+            rotate: 0,
+            opacity: 1,
+            duration: 0.2,
+          }
+        );
+      },
+    });
+  }
   function wrapEachChar(selector, spanClass) {
     const blocks = document.querySelectorAll(selector);
 
@@ -1561,77 +1599,72 @@ const darkbrown = "#966e50";
 
     //cursor text animations
     {
-      document
-        .querySelector(".graybg")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "I made various project in web dev, backend, c++ etc. View my github or resume for more info",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "20vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".graybg").addEventListener("mouseenter", () => {
+        gsap.to("#cursor h4", {
+          textContent:
+            "I made various project in web dev, backend, c++ etc. View my github or resume for more info",
         });
+        gsap.to("#cursor", {
+          borderRadius: "20px",
+          height: "fit-content",
+          width: "20vw",
+          padding: "0vh 1.8vh",
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
 
-      document
-        .querySelector(".graybg")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".graybg").addEventListener("mouseleave", () => {
+        gsap.to("#cursor h4", {
+          textContent: "",
         });
+        gsap.to("#cursor", {
+          borderRadius: "50%",
+          height: "30px",
+          width: "30px",
+          padding: 0,
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
     }
     {
-      document
-        .querySelector(".aimlcont")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "I have keen interest in integrating Artificial Intelligence to solve real life problems. I am passionate about machine learning and it's techniques..",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "20vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".aimlcont").addEventListener("mouseenter", () => {
+        gsap.to("#cursor h4", {
+          textContent:
+            "I have keen interest in integrating Artificial Intelligence to solve real life problems. I am passionate about machine learning and it's techniques..",
         });
+        gsap.to("#cursor", {
+          borderRadius: "20px",
+          height: "fit-content",
+          width: "20vw",
+          padding: "0vh 1.8vh",
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
 
-      document
-        .querySelector(".aimlcont")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".aimlcont").addEventListener("mouseleave", () => {
+        gsap.to("#cursor h4", {
+          textContent: "",
         });
+        gsap.to("#cursor", {
+          borderRadius: "50%",
+          height: "30px",
+          width: "30px",
+          padding: 0,
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
     }
     {
       document
         .querySelector(".readycont")
         .addEventListener("mouseenter", () => {
           gsap.to("#cursor h4", {
-            textContent: "I am ready to continue my work as an AI Engineer/Intern.",
+            textContent:
+              "I am ready to continue my work as an AI Engineer/Intern.",
           });
           gsap.to("#cursor", {
             borderRadius: "20px",
@@ -1660,110 +1693,102 @@ const darkbrown = "#966e50";
         });
     }
     {
-      document
-        .querySelector(".badge")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "I have completed my internships from AICTE certified institutes.",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "20vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".badge").addEventListener("mouseenter", () => {
+        gsap.to("#cursor h4", {
+          textContent:
+            "I have completed my internships from AICTE certified institutes.",
         });
+        gsap.to("#cursor", {
+          borderRadius: "20px",
+          height: "fit-content",
+          width: "20vw",
+          padding: "0vh 1.8vh",
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
 
-      document
-        .querySelector(".badge")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".badge").addEventListener("mouseleave", () => {
+        gsap.to("#cursor h4", {
+          textContent: "",
         });
+        gsap.to("#cursor", {
+          borderRadius: "50%",
+          height: "30px",
+          width: "30px",
+          padding: 0,
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
     }
     {
-      document
-        .querySelector(".orangebg")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "I am equipped with skills such as Python, Machine Learning, CPP, Data Structures and Web Developement. I have experience working and collaborating with teams and a corporate environment.",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "20vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".orangebg").addEventListener("mouseenter", () => {
+        gsap.to("#cursor h4", {
+          textContent:
+            "I am equipped with skills such as Python, Machine Learning, CPP, Data Structures and Web Developement. I have experience working and collaborating with teams and a corporate environment.",
         });
+        gsap.to("#cursor", {
+          borderRadius: "20px",
+          height: "fit-content",
+          width: "20vw",
+          padding: "0vh 1.8vh",
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
 
-      document
-        .querySelector(".orangebg")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".orangebg").addEventListener("mouseleave", () => {
+        gsap.to("#cursor h4", {
+          textContent: "",
         });
+        gsap.to("#cursor", {
+          borderRadius: "50%",
+          height: "30px",
+          width: "30px",
+          padding: 0,
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
     }
     {
-      document
-        .querySelector(".brownbg")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "I am known to various IDEs like VS Code, Google Colab, Pycharm, Cursor, etc. I also have major experience with Database Management tools like MongoDB Atlas, MySQL,etc.",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "20vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".brownbg").addEventListener("mouseenter", () => {
+        gsap.to("#cursor h4", {
+          textContent:
+            "I am known to various IDEs like VS Code, Google Colab, Pycharm, Cursor, etc. I also have major experience with Database Management tools like MongoDB Atlas, MySQL,etc.",
         });
+        gsap.to("#cursor", {
+          borderRadius: "20px",
+          height: "fit-content",
+          width: "20vw",
+          padding: "0vh 1.8vh",
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
 
-      document
-        .querySelector(".brownbg")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector(".brownbg").addEventListener("mouseleave", () => {
+        gsap.to("#cursor h4", {
+          textContent: "",
         });
+        gsap.to("#cursor", {
+          borderRadius: "50%",
+          height: "30px",
+          width: "30px",
+          padding: 0,
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
     }
     {
       document
         .querySelector(".cgpascore")
         .addEventListener("mouseenter", () => {
           gsap.to("#cursor h4", {
-            textContent: "Boosting through my studies and syllabus with current CGPA of 9.1",
+            textContent:
+              "Boosting through my studies and syllabus with current CGPA of 9.1",
           });
           gsap.to("#cursor", {
             borderRadius: "20px",
@@ -1825,37 +1850,33 @@ const darkbrown = "#966e50";
         });
     }
     {
-      document
-        .querySelector("#homeicon")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Go to Homepage",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "fit-content",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector("#homeicon").addEventListener("mouseenter", () => {
+        gsap.to("#cursor h4", {
+          textContent: "Go to Homepage",
         });
+        gsap.to("#cursor", {
+          borderRadius: "20px",
+          height: "fit-content",
+          width: "fit-content",
+          padding: "0vh 1.8vh",
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
 
-      document
-        .querySelector("#homeicon")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
+      document.querySelector("#homeicon").addEventListener("mouseleave", () => {
+        gsap.to("#cursor h4", {
+          textContent: "",
         });
+        gsap.to("#cursor", {
+          borderRadius: "50%",
+          height: "30px",
+          width: "30px",
+          padding: 0,
+          duration: 0.5,
+          ease: "back.out",
+        });
+      });
     }
   }
 }
