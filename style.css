@@ -6,7 +6,7 @@
   --sun: #ffe700;
   --light-blue: #a1b2ff;
   --darkbrown: #966e50;
-  --darkblue:#5271ff;
+  --darkblue: #5271ff;
   --orange: #f9a01b;
   --dark-gray: #545454;
 }
@@ -675,12 +675,11 @@ body {
   .smvisible {
     display: none;
   }
-  .heightfitcontent{
+  .heightfitcontent {
     height: fit-content;
     padding: none;
   }
 
-  
   #navline2 {
     height: 0.4vw;
     margin-bottom: 1vw;
@@ -788,7 +787,7 @@ body {
     line-height: 0;
     color: var(--light-blue);
   }
-  .relative{
+  .relative {
     position: relative;
   }
 
@@ -798,11 +797,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
-    height:100%;
-    width:100%;
-    position:absolute;
-    top:0;
-    left:0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   #readytext {
@@ -818,7 +817,7 @@ body {
     font-family: "norwester";
     color: #fff;
     text-align: center;
-    z-index:2;
+    z-index: 2;
   }
   #skillnumber {
     font-size: 4vw;
@@ -950,7 +949,7 @@ body {
     font-family: "brick";
     margin: 0.25;
   }
-   #navline2 {
+  #navline2 {
     height: 1vw;
     margin-bottom: 5vw;
     border-radius: 2rem; /* Optional: keeps ends rounded */
@@ -1082,7 +1081,7 @@ body {
     color: #fff;
     text-align: center;
   }
-   #skillnumber {
+  #skillnumber {
     font-size: 14vw;
     font-family: "brick";
     line-height: 0;
@@ -1133,19 +1132,285 @@ body {
   #patterndiv {
     align-items: center;
   }
-  
-  .orangebg{
+
+  .orangebg {
     gap: 0;
   }
-  .brownbg{
-    gap:0;
+  .brownbg {
+    gap: 0;
   }
-  #cloud4{
+  #cloud4 {
     position: absolute;
     height: 22vw;
     top: 12%;
     right: 5%;
     z-index: 10;
   }
-  
+}
+
+/* Section 3 */
+@media screen {
+  #projectsection {
+    height: 100%;
+    padding: 2vw 6vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .projectsectioncontainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1vw;
+  }
+  #projecttitlecontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0vw 0vw;
+    height: 12vh;
+  }
+  #projecttitle {
+    display: flex;
+    gap: 1;
+    align-items: center;
+  }
+  #projecttitle h1 {
+    font-size: 4vw;
+    font-family: "brick";
+    color: var(--orange);
+    line-height: 0;
+  }
+  #githubicon {
+    fill: var(--orange);
+    height: 6vw;
+    width: 6vw;
+    cursor: pointer;
+  }
+  #navline3 {
+    height: 0.4vw;
+    background-color: var(--orange);
+    margin: auto 0vw;
+    border-radius: 2rem; /* Optional: for rounded edges */
+  }
+  #projectlistcontainer {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    gap: 4vw;
+  }
+  #list {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 4vw 4vw;
+    padding-left: 0vw;
+    justify-content: center;
+    gap: 1vw;
+  }
+  .listseperator {
+    height: 1vw;
+    margin: auto 0vw;
+    border-radius: 2rem;
+    line-height: 0;
+  }
+  .listcontent {
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 1vw;
+  }
+  .listcontent h2 {
+    font-family: "brick";
+    font-size: 2vw;
+    line-height: 0;
+  }
+  #listiconscontainer {
+    display: flex;
+    gap: 1vw;
+    justify-content: center;
+    align-items: center;
+  }
+  .listicon {
+    fill: var(--orange);
+    height: 3vw;
+    width: 3vw;
+    cursor: pointer;
+  }
+
+  .orangelink {
+    color: var(--orange);
+    fill: var(--orange);
+  }
+  .bluelink {
+    color: var(--light-blue);
+    fill: var(--light-blue);
+  }
+  .brownlink {
+    color: var(--brown);
+    fill: var(--brown);
+  }
+  .pinklink {
+    color: var(--pink);
+    fill: var(--pink);
+  }
+  #seperator1 {
+    background-color: var(--orange);
+  }
+  #seperator2 {
+    background-color: var(--orange);
+  }
+  #seperator3 {
+    background-color: var(--light-blue);
+  }
+  #seperator4 {
+    background-color: var(--brown);
+  }
+  #seperator5 {
+    background-color: var(--pink);
+  }
+  #previewpanecontainer {
+    height: 100%;
+    width: 100%;
+    padding: 1vw;
+  }
+  #previewpane {
+    height: 100%;
+    width: 100%;
+    border-radius: 4rem;
+    border: solid #fff;
+    border-width: 0.7vw;
+    overflow: hidden;
+    position: relative;
+  }
+  #websiteframe {
+    height: 100%;
+    width: 100%;
+  }
+  #expandingbutton {
+    height: 4vw;
+    width: 4vw;
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    bottom: 1vw;
+    right: 1vw;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vw;
+    cursor: pointer;
+  }
+  #expandicon {
+    width: 100%;
+    height: 100%;
+    fill: #545454;
+  }
+  #projectsectioncloud {
+    height: 8vw;
+    position: absolute;
+    z-index: 5;
+    top: 15%;
+    left: 20%;
+  }
+  #projectsectionbg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    z-index: -1;
+  }
+}
+@media (max-width: 768px) {
+  #projectsection {
+    margin: 20vw 0;
+    height: 100%;
+    padding: 0vw 6vw;
+  }
+  #projectsectioncontainer {
+    height: fit-content;
+    gap: 0;
+  }
+  #homeicon {
+    display: none;
+  }
+  #projectitlecontainer {
+    height: fit-content;
+  }
+  #projecttitle {
+    flex-direction: column-reverse;
+    align-items: start;
+    height: fit-content;
+  }
+  #projecttitle h1 {
+    font-size: 14vw;
+    line-height: 0;
+  }
+  #githubicon {
+    height: 18vw;
+    width: auto;
+  }
+  #previewpanecontainer {
+    display: none;
+  }
+  #navline3 {
+    margin: 8vw 0vw;
+    height: 1vw;
+  }
+  #list {
+    gap: 2vw;
+    padding:0;
+  }
+  .listseperator {
+    display: none;
+  }
+  .listcontent {
+    height: fit-content;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.6);
+    flex-direction: column;
+    padding: 2vw;
+    align-items: start;
+    border-radius: 2rem;
+    padding: 3vw 4vw;
+  }
+  .listcontent h2 {
+    font-size: 9vw;
+    word-wrap: break-word;
+    line-height: normal;
+    margin: 0;
+  }
+  .listicon {
+    height: 6vw;
+    width: auto;
+  }
+  .projectinfo{
+    line-height: 0.5;
+  }
+
+  #projectsectionbg {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    height: 90vw;
+    width: auto;
+    z-index: -1;
+  }
+  #projectsectioncloud {
+    top: 2%;
+    left: 50%;
+    height: 20vw;
+  }
+  .previewwebsite{
+    display: none;
+  }
 }

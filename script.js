@@ -114,12 +114,12 @@ const darkbrown = "#966e50";
       gsap.to("#darkmode", {
         opacity: 0,
         display: "none",
-        duration: 1,
+        duration: 0.5,
         onComplete: () => {
           gsap.to("#lightmode", {
             opacity: 1,
             display: "inline-block",
-            duration: 1,
+            duration: 0.5,
           });
         },
       });
@@ -136,8 +136,27 @@ const darkbrown = "#966e50";
         color: beige,
         duration: 1,
       });
+      gsap.to("#projecttitle h1", {
+        color: beige,
+        duration: 1,
+      });
+      gsap.to("#navline3", {
+        backgroundColor: beige,
+        duration: 1,
+      });
+      gsap.to("#githubicon", {
+        fill: beige,
+        duration: 1,
+      });
+      gsap.to("#homeicon", {
+        fill: beige,
+        duration: 1,
+      });
+      
       isDarkMode = true;
-    } else {
+    } 
+    
+    else {
       // Light mode
       gsap.to("body", {
         backgroundColor: beige,
@@ -162,12 +181,12 @@ const darkbrown = "#966e50";
       gsap.to("#lightmode", {
         opacity: 0,
         display: "none",
-        duration: 1,
+        duration: 0.5,
         onComplete: () => {
           gsap.to("#darkmode", {
             opacity: 1,
             display: "inline-block",
-            duration: 1,
+            duration: 0.5,
           });
         },
       });
@@ -181,6 +200,22 @@ const darkbrown = "#966e50";
       });
       gsap.to("#skilltitle h1", {
         color: orange,
+        duration: 1,
+      });
+      gsap.to("#projecttitle h1", {
+        color: orange,
+        duration: 1,
+      });
+      gsap.to("#navline3", {
+        backgroundColor: orange,
+        duration: 1,
+      });
+      gsap.to("#githubicon", {
+        fill: orange,
+        duration: 1,
+      });
+      gsap.to("#homeicon", {
+        fill: orange,
         duration: 1,
       });
 
@@ -1881,6 +1916,11 @@ const darkbrown = "#966e50";
   }
 }
 
+//section 3
+{
+
+}
+
 //transition animations
 {
   if (window.matchMedia("(max-width: 768px)").matches) {
@@ -1971,14 +2011,15 @@ const darkbrown = "#966e50";
       duration: 0.5,
     });
   } else {
-    gsap.from("#skilltitle", {
+    gsap.from("#skilltitle h1", {
       x: 800,
       scale: 3,
       opacity: 0,
+      stagger:0.5,
       scrollTrigger: {
         trigger: "#skillsection",
         scroller: "body",
-        end: "top 0%",
+        end: "top 5%",
         start: "top 90%",
         scrub: true,
       },
@@ -2057,9 +2098,6 @@ const darkbrown = "#966e50";
           repeat: 1,
         });
       },
-    });
-    s2s.from("#skillsectionbg", {
-      opacity: 0,
     });
     s2s.from("#homeicon", {
       y: 20,
