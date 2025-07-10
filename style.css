@@ -1408,24 +1408,24 @@ body {
     fill: var(--orange);
   }
   .box2{
-    background-color: var(--darkblue);
-    border: solid white;
-    color: white;
+    background-color: var(--beige);
+    border: solid var(--darkblue);
+    color: var(--darkblue);
   }
   .box2 svg{
-    fill: white;
+    fill: var(--darkblue);
   }
   .box3{
     background-color: var(--beige);
     border: solid var(--brown);
   }
   .box4{
-    background-color: var(--pink);
-    border: solid white ;
-    color: white;
+    background-color: var(--beige);
+    border: solid var(--pink) ;
+    color: var(--pink);
   }
   .box4 svg{
-    fill: white;
+    fill: var(--pink);
   }
   .listcontent h2 {
     font-size: 9vw;
