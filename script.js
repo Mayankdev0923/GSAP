@@ -2,6 +2,7 @@ const menuButton = document.getElementById("sidemenuopenicon");
 const menuLinks = document.getElementById("navlinks");
 const menuCloseButton = document.getElementById("sidemenucloseicon");
 const menuBlur = document.getElementById("menublur");
+const iframe = document.getElementById("websiteframe");
 const resume = document.getElementById("resume");
 const post = document.getElementById("post");
 var isDarkMode = false;
@@ -14,9 +15,124 @@ const lightblue = "#a1b2ff";
 const orange = "#f9a01b";
 const darkblue = "#5271ff";
 const darkbrown = "#966e50";
+const woodwardlink =
+  "https://webflow.com/made-in-webflow/website/relume-cloneable";
+const energonlink =
+  "https://webflow.com/made-in-webflow/website/vimeo-background-video-play-button";
+const gdglink =
+  "https://webflow.com/made-in-webflow/website/Interactive-Presentation";
+const coderushlink =
+  "https://webflow.com/made-in-webflow/website/True-Responsive-Testing";
 
 //functions
 {
+  function setupBoxToggle(boxClass) {
+    let isTapped = false;
+    const box = document.querySelector(`.${boxClass}`);
+    const target = `.${boxClass}`;
+
+    // Click inside the box
+    box.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const temptl = gsap.timeline({
+        onComplete: () => {
+          isTapped = !isTapped;
+        },
+      });
+
+      if (!isTapped) {
+        temptl.to(`${target} h4`, { opacity: 0, duration: 0.5 });
+        temptl.set(`${target} h4`, { display: "none" });
+        temptl.set(`${target} h3`, { display: "block" });
+        temptl.to(`${target} h3`, { opacity: 1, duration: 0.5 });
+      } else {
+        temptl.to(`${target} h3`, { opacity: 0, duration: 0.5 });
+        temptl.set(`${target} h3`, { display: "none" });
+        temptl.set(`${target} h4`, { display: "block" });
+        temptl.to(`${target} h4`, { opacity: 1, duration: 0.5 });
+      }
+    });
+
+    // Click outside the box
+    document.addEventListener("click", (e) => {
+      if (!box.contains(e.target) && isTapped) {
+        const temptl = gsap.timeline({
+          onComplete: () => {
+            isTapped = false;
+          },
+        });
+        temptl.to(`${target} h3`, { opacity: 0, duration: 0.5 });
+        temptl.set(`${target} h3`, { display: "none" });
+        temptl.set(`${target} h4`, { display: "block" });
+        temptl.to(`${target} h4`, { opacity: 1, duration: 0.5 });
+      }
+    });
+  }
+  function openpreviewwoodward() {
+    gsap.to(iframe, {
+      duration: 0.5,
+      opacity: 0,
+      onComplete: () => {
+        iframe.src = woodwardlink;
+        // wait a moment for the iframe to start loading, then fade in
+        setTimeout(() => {
+          gsap.to(iframe, {
+            duration: 0.5,
+            opacity: 1,
+          });
+        }, 1000); // small delay to avoid flickering
+      },
+    });
+  }
+  function openpreviewenergon() {
+    gsap.to(iframe, {
+      duration: 0.5,
+      opacity: 0,
+      onComplete: () => {
+        iframe.src = energonlink;
+        // wait a moment for the iframe to start loading, then fade in
+        setTimeout(() => {
+          gsap.to(iframe, {
+            duration: 0.5,
+            opacity: 1,
+          });
+        }, 1000); // small delay to avoid flickering
+      },
+    });
+  }
+  function openpreviewcoderush() {
+    gsap.to(iframe, {
+      duration: 0.5,
+      opacity: 0,
+      onComplete: () => {
+        iframe.src = coderushlink;
+        // wait a moment for the iframe to start loading, then fade in
+        setTimeout(() => {
+          gsap.to(iframe, {
+            duration: 0.5,
+            opacity: 1,
+          });
+        }, 1000); // small delay to avoid flickering
+      },
+    });
+  }
+  function openpreviewgdg() {
+    gsap.to(iframe, {
+      duration: 0.5,
+      opacity: 0,
+      onComplete: () => {
+        iframe.src = gdglink;
+        // wait a moment for the iframe to start loading, then fade in
+        setTimeout(() => {
+          gsap.to(iframe, {
+            duration: 0.5,
+            opacity: 1,
+          });
+        }, 1000); // small delay to avoid flickering
+      },
+    });
+  }
   function closemenu() {
     const tl = gsap.timeline();
 
@@ -152,11 +268,13 @@ const darkbrown = "#966e50";
         fill: beige,
         duration: 1,
       });
-      
+      gsap.to("#homeicon2", {
+        fill: beige,
+        duration: 1,
+      });
+
       isDarkMode = true;
-    } 
-    
-    else {
+    } else {
       // Light mode
       gsap.to("body", {
         backgroundColor: beige,
@@ -215,6 +333,10 @@ const darkbrown = "#966e50";
         duration: 1,
       });
       gsap.to("#homeicon", {
+        fill: orange,
+        duration: 1,
+      });
+      gsap.to("#homeicon2", {
         fill: orange,
         duration: 1,
       });
@@ -1916,20 +2038,14 @@ const darkbrown = "#966e50";
   }
 }
 
-//section 3
-{
-
-}
-
-//transition animations
+//transition animations section2
 {
   if (window.matchMedia("(max-width: 768px)").matches) {
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
         scroller: "body",
-        end: "top 0%",
-        start: "top 70%",
+        start: "top 50%",
         scrub: true,
       },
     });
@@ -1937,7 +2053,7 @@ const darkbrown = "#966e50";
     s2s.from("#skilltitle", {
       opacity: 0,
       duration: 1,
-      scale: 0.5,
+      scale: 2,
     });
     s2s.from("#navline2", {
       width: 0,
@@ -1959,10 +2075,11 @@ const darkbrown = "#966e50";
       },
     });
     s2s.from(".bentocol", {
-      scale: 1,
+      scale: 2,
       opacity: 0,
       y: 200,
       stagger: 0.7,
+      duration: 1,
       ease: "power1.out",
       onStart: () => {
         gsap.to(".badge", {
@@ -1970,15 +2087,6 @@ const darkbrown = "#966e50";
           duration: 10,
           repeat: -1,
           ease: "power1.inOut",
-        });
-        gsap.to(".squishy", {
-          width: "105%",
-          yoyo: true,
-          stagger: 0.5,
-          delay: 0.5,
-          duration: 1,
-          ease: "power.inOut",
-          repeat: -1,
         });
         gsap.to("#cgpanumber", {
           color: "#b6825b",
@@ -1994,11 +2102,6 @@ const darkbrown = "#966e50";
           repeat: -1,
           ease: "power1.inOut",
         });
-        gsap.to(".graybg", {
-          width: "90%",
-          yoyo: true,
-          repeat: 1,
-        });
       },
     });
     s2s.from("#skillsectionbg", {
@@ -2011,25 +2114,28 @@ const darkbrown = "#966e50";
       duration: 0.5,
     });
   } else {
-    gsap.from("#skilltitle h1", {
-      x: 800,
-      scale: 3,
-      opacity: 0,
-      stagger:0.5,
-      scrollTrigger: {
-        trigger: "#skillsection",
-        scroller: "body",
-        end: "top 5%",
-        start: "top 90%",
-        scrub: true,
-      },
-    });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#skillsection",
+          scroller: "body",
+          start: "top 90%",
+          end: "top 10%",
+          scrub: true,
+        },
+      })
+      .from("#skilltitle h1", {
+        x: 800,
+        scale: 3,
+        opacity: 0,
+        stagger: 0.5,
+      });
 
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
         scroller: "body",
-        end: "top -70%",
+        end: "+=1500px",
         start: "top 0%",
         pin: true,
         scrub: true,
@@ -2056,7 +2162,7 @@ const darkbrown = "#966e50";
       },
     });
     s2s.from(".bentocol", {
-      scale: 1,
+      scale: 2,
       opacity: 0,
       y: 200,
       stagger: 0.7,
@@ -2105,5 +2211,527 @@ const darkbrown = "#966e50";
       delay: 0.5,
       duration: 0.5,
     });
+  }
+}
+
+//section 3
+{
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    //listcontent tap animation
+    ["box1", "box2", "box3", "box4"].forEach(setupBoxToggle);
+  } else {
+    //listcontent hover animations
+    {
+      document.querySelector(".box1").addEventListener("mouseenter", () => {
+        gsap.to(".box1", {
+          backgroundColor: "rgba(255,255,255,0.7)",
+          scale: 0.95,
+        });
+      });
+      document.querySelector(".box1").addEventListener("mouseleave", () => {
+        gsap.to(".box1", {
+          backgroundColor: "rgba(255,255,255,0.2)",
+          scale: 1,
+        });
+      });
+    }
+    {
+      document.querySelector(".box2").addEventListener("mouseenter", () => {
+        gsap.to(".box2", {
+          backgroundColor: "rgba(255,255,255,0.7)",
+          scale: 0.95,
+        });
+      });
+      document.querySelector(".box2").addEventListener("mouseleave", () => {
+        gsap.to(".box2", {
+          backgroundColor: "rgba(255,255,255,0.2)",
+          scale: 1,
+        });
+      });
+    }
+    {
+      document.querySelector(".box3").addEventListener("mouseenter", () => {
+        gsap.to(".box3", {
+          backgroundColor: "rgba(255,255,255,0.7)",
+          scale: 0.95,
+        });
+      });
+      document.querySelector(".box3").addEventListener("mouseleave", () => {
+        gsap.to(".box3", {
+          backgroundColor: "rgba(255,255,255,0.2)",
+          scale: 1,
+        });
+      });
+    }
+    {
+      document.querySelector(".box4").addEventListener("mouseenter", () => {
+        gsap.to(".box4", {
+          backgroundColor: "rgba(255,255,255,0.7)",
+          scale: 0.95,
+        });
+      });
+      document.querySelector(".box4").addEventListener("mouseleave", () => {
+        gsap.to(".box4", {
+          backgroundColor: "rgba(255,255,255,0.2)",
+          scale: 1,
+        });
+      });
+    }
+
+    //websitepreview cursor animations
+    {
+      document
+        .querySelector(".box1 .previewwebsite")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Preview Website",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "10vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box1 .previewwebsite")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".box2 .previewwebsite")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Preview Website",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "10vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box2 .previewwebsite")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".box3 .previewwebsite")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Preview Website",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "10vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box3 .previewwebsite")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".box4 .previewwebsite")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Preview Website",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "10vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box4 .previewwebsite")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+
+    //expandicon cursor   animation
+    {
+      {
+        document
+          .querySelector("#expandingbutton")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#expandicon", {
+              fill: "#111",
+            });
+            gsap.to("#cursor h4", {
+              textContent: "Open in New Tab",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "10vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+
+        document
+          .querySelector("#expandingbutton")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#expandicon", {
+              fill: "#545454",
+            });
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
+          });
+      }
+    }
+
+    //expandicon onclick event
+    document.querySelector("#expandicon").addEventListener("click", () => {
+      window.open(iframe.src, "_blank");
+    });
+
+    //gotogithub cursor animations
+    {
+      document
+        .querySelector(".box1 .gotogithub")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Go to Github Source",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "15vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box1 .gotogithub")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".box2 .gotogithub")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Go to Github Source",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "15vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box2 .gotogithub")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".box3 .gotogithub")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Go to Github Source",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "15vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box3 .gotogithub")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+    {
+      document
+        .querySelector(".box4 .gotogithub")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Go to Github Source",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "15vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector(".box4 .gotogithub")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
+  }
+}
+
+//transition animations section3
+{
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const s3s = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#navline3",
+        scroller: "body",
+        scrub: true,
+      },
+    });
+    s3s.from("#projecttitle", {
+      opacity: 0,
+      scale: 2,
+    });
+    s3s.from("#projectsectionbg", {
+      scale: 0.5,
+      opacity: 0,
+    });
+    s3s.from("#navline3", {
+      width: 0,
+    });
+    s3s.from("#projectsectioncloud", {
+      opacity: 0,
+      x: 20,
+      onComplete: () => {
+        gsap.to("#projectsectioncloud", {
+          x: "-14vw",
+          duration: 12,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s3s.from(".listcontent", {
+      opacity:0,
+      stagger: 0.5,
+      y: 200,
+    });
+    s3s.from("#projectsectioncloud2", {
+      opacity: 0,
+      x: 20,
+      onComplete: () => {
+        gsap.to("#projectsectioncloud2", {
+          x: "8vw",
+          duration: 12,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+  } else {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#projectsection",
+          scroller: "body",
+          scrub: true,
+          start: "top 90%",
+          end: "top 0%", // ends just before pinning starts
+        },
+      })
+      .from("#projecttitle", {
+        scale: 3,
+        opacity: 0,
+        x: -800,
+      })
+      .from("#projectsectionbg", {
+        scale: 0.5,
+        opacity: 0,
+        y: 800,
+      });
+    const s3s = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#projectsection",
+        scroller: "body",
+        pin: true,
+        scrub: true,
+        start: "top 0%",
+        end: "+=1500px",
+      },
+    });
+    s3s.from(".homeiconcontainer svg", {
+      y: 2000,
+    });
+    s3s.from("#navline3", {
+      width: 0,
+    });
+    s3s.from("#projectsectioncloud", {
+      opacity: 0,
+      x: 20,
+      onComplete: () => {
+        gsap.to("#projectsectioncloud", {
+          x: "-4vw",
+          duration: 8,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s3s.from(".listseperator", {
+      x: -200,
+      y: 20,
+      opacity: 0,
+      stagger: 0.2,
+    });
+    s3s.from(".listcontent", {
+      x: -200,
+      y: 20,
+      opacity: 0,
+      stagger: 0.2,
+    });
+    s3s.from("#projectsectioncloud2", {
+      opacity: 0,
+      x: 20,
+      onComplete: () => {
+        gsap.to("#projectsectioncloud2", {
+          x: "2vw",
+          duration: 10,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s3s.from("#previewpane", {
+      opacity: 0,
+      x: 40,
+    });
+    s3s.set("#previewpane",{
+      pointerEvents : "auto"
+    })
+    s3s.to("#projectsectionbg",{
+      opacity:0.99
+    })
   }
 }

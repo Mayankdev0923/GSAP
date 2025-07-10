@@ -400,7 +400,7 @@ body {
   #herosection {
     position: relative;
     height: fit-content;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   nav {
@@ -544,7 +544,7 @@ body {
 
   /* Bottom Links */
   #bottomlink {
-    padding: 0.5vw 4vw;
+    padding: 4vw 4vw;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -562,7 +562,6 @@ body {
     align-items: center;
     justify-content: center;
     padding: 0 4vw;
-    margin-bottom: 0.7vw;
     background-color: var(--brown);
     border-radius: 6vw;
   }
@@ -647,7 +646,6 @@ body {
     height: 100%;
     padding: 2vw 4vw;
     position: relative;
-    overflow: hidden;
   }
   .sectioncontainer {
     height: 100%;
@@ -936,6 +934,10 @@ body {
     height: fit-content;
     padding: 2vw 4vw;
     position: relative;
+    margin-top: 20vh;
+        overflow: hidden;
+        padding-bottom: 20vh;
+
   }
   .smvisible {
     display: block;
@@ -1156,7 +1158,12 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
+  }
+  #homeicon2 {
+    fill: var(--orange);
+    height: 6vw;
+    width: 6vw;
+    cursor: pointer;
   }
   .projectsectioncontainer {
     height: 100%;
@@ -1178,7 +1185,7 @@ body {
     align-items: center;
   }
   #projecttitle h1 {
-    font-size: 4vw;
+    font-size: 5vw;
     font-family: "brick";
     color: var(--orange);
     line-height: 0;
@@ -1188,6 +1195,9 @@ body {
     height: 6vw;
     width: 6vw;
     cursor: pointer;
+  }
+  .homeiconcontainer {
+    overflow: hidden;
   }
   #navline3 {
     height: 0.4vw;
@@ -1290,6 +1300,9 @@ body {
     border-width: 0.7vw;
     overflow: hidden;
     position: relative;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    pointer-events: none;
   }
   #websiteframe {
     height: 100%;
@@ -1331,25 +1344,29 @@ body {
   }
   #projectsectionbg {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70vw;
+    width: 75vw;
     z-index: -1;
   }
 }
 @media (max-width: 768px) {
+  #homeicon2 {
+    display: none;
+  }
   #projectsection {
-    margin-top: 20vw;
     margin-bottom: 20vw;
     height: fit-content;
     padding: 0vw 6vw;
     overflow: visible;
+    min-height: 100%;
+    overflow: hidden;
   }
   .projectsectioncontainer {
     height: fit-content;
     flex-direction: column;
-    gap:2vw
+    gap: 2vw;
   }
   #homeicon {
     display: none;
@@ -1397,34 +1414,34 @@ body {
     align-items: start;
     border-radius: 2rem;
     padding: 3vw 4vw;
-    border:solid 0.1vw;
+    border: solid 0.1vw;
   }
-  .box1{
+  .box1 {
     background-color: var(--beige);
     border: solid --orange;
     color: var(--orange);
   }
-  .box1 svg{
+  .box1 svg {
     fill: var(--orange);
   }
-  .box2{
+  .box2 {
     background-color: var(--beige);
     border: solid var(--darkblue);
     color: var(--darkblue);
   }
-  .box2 svg{
+  .box2 svg {
     fill: var(--darkblue);
   }
-  .box3{
+  .box3 {
     background-color: var(--beige);
     border: solid var(--brown);
   }
-  .box4{
+  .box4 {
     background-color: var(--beige);
-    border: solid var(--pink) ;
+    border: solid var(--pink);
     color: var(--pink);
   }
-  .box4 svg{
+  .box4 svg {
     fill: var(--pink);
   }
   .listcontent h2 {
@@ -1433,13 +1450,14 @@ body {
     line-height: normal;
     margin: 0;
   }
-  .listcontent h3{
+  .listcontent h3 {
     line-height: normal;
     font-family: "gilroy";
     display: none;
+    opacity: 0;
   }
   .listicon {
-    height: 6vw;
+    height: 10vw;
     width: auto;
   }
   .projectinfo {
@@ -1461,8 +1479,8 @@ body {
     height: 20vw;
   }
   #projectsectioncloud2 {
-    top: 77%;
-    left: 25%;
+    top: 82%;
+    left: 65%;
     height: 10vw;
   }
   .previewwebsite {
