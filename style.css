@@ -1219,7 +1219,7 @@ body {
   }
   .listcontent {
     backdrop-filter: blur(30px);
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
     height: 100%;
     width: 100%;
     border-radius: 1rem;
@@ -1322,6 +1322,13 @@ body {
     top: 15%;
     left: 20%;
   }
+  #projectsectioncloud2 {
+    height: 6vw;
+    position: absolute;
+    z-index: 5;
+    bottom: 5%;
+    right: 40%;
+  }
   #projectsectionbg {
     position: absolute;
     top: 50%;
@@ -1339,16 +1346,18 @@ body {
     padding: 0vw 6vw;
     overflow: visible;
   }
-  #projectsectioncontainer {
+  .projectsectioncontainer {
     height: fit-content;
-    gap: 0;
+    flex-direction: column;
+    gap:2vw
   }
   #homeicon {
     display: none;
   }
-  #projectitlecontainer {
+  #projecttitlecontainer {
+    display: flex;
+    flex-direction: column;
     height: fit-content;
-    justify-content: space-between;
   }
   #projecttitle {
     flex-direction: column-reverse;
@@ -1368,13 +1377,13 @@ body {
     display: none;
   }
   #navline3 {
-    margin: 8vw 0vw;
+    margin: 0vw 0vw;
     height: 1vw;
   }
   #list {
-    gap: 2vw;
+    gap: 4vw;
     padding: 0;
-    padding-bottom: 10vw;
+    padding: 8vw 0vw;
   }
   .listseperator {
     display: none;
@@ -1382,18 +1391,52 @@ body {
   .listcontent {
     height: fit-content;
     backdrop-filter: blur(2px);
-    background-color: rgba(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.6);
     flex-direction: column;
     padding: 2vw;
     align-items: start;
     border-radius: 2rem;
     padding: 3vw 4vw;
+    border:solid 0.1vw;
+  }
+  .box1{
+    background-color: var(--beige);
+    border: solid --orange;
+    color: var(--orange);
+  }
+  .box1 svg{
+    fill: var(--orange);
+  }
+  .box2{
+    background-color: var(--darkblue);
+    border: solid white;
+    color: white;
+  }
+  .box2 svg{
+    fill: white;
+  }
+  .box3{
+    background-color: var(--beige);
+    border: solid var(--brown);
+  }
+  .box4{
+    background-color: var(--pink);
+    border: solid white ;
+    color: white;
+  }
+  .box4 svg{
+    fill: white;
   }
   .listcontent h2 {
     font-size: 9vw;
     word-wrap: break-word;
     line-height: normal;
     margin: 0;
+  }
+  .listcontent h3{
+    line-height: normal;
+    font-family: "gilroy";
+    display: none;
   }
   .listicon {
     height: 6vw;
@@ -1413,9 +1456,14 @@ body {
     z-index: -1;
   }
   #projectsectioncloud {
-    top: 2%;
+    top: 18%;
     left: 50%;
     height: 20vw;
+  }
+  #projectsectioncloud2 {
+    top: 77%;
+    left: 25%;
+    height: 10vw;
   }
   .previewwebsite {
     display: none;
