@@ -24,8 +24,31 @@ const gdglink =
 const coderushlink =
   "https://webflow.com/made-in-webflow/website/True-Responsive-Testing";
 
+
+
 //functions
 {
+  function scrollToSectionEnd(event) {
+    event.preventDefault();
+
+    const href = event.currentTarget.getAttribute("href");
+    const target = document.querySelector(href);
+
+    if (target) {
+      const rect = target.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const sectionBottom = rect.top + scrollTop;
+
+      const scrollToY = sectionBottom - window.innerHeight;
+
+      gsap.to(window, {
+        scrollTo: scrollToY,
+        duration: 1.5,
+        ease: "power2.out",
+      });
+    }
+  }
+
   function setupBoxToggle(boxClass) {
     let isTapped = false;
     const box = document.querySelector(`.${boxClass}`);
@@ -237,7 +260,7 @@ const coderushlink =
           gsap.to("#lightmodecontainer", {
             display: "flex",
             opacity: 1,
-            duration:0.5,
+            duration: 0.5,
           });
           gsap.to("#lightmode", {
             opacity: 1,
@@ -278,6 +301,21 @@ const coderushlink =
       gsap.to("#homeicon2", {
         fill: beige,
         duration: 1,
+      });
+      gsap.to("#homeicon3", {
+        fill: beige,
+        duration: 1,
+      });
+      gsap.to("#contacttitle h1", {
+        color: beige,
+        duration: 1,
+      });
+      gsap.to("#navline4", {
+        backgroundColor: beige,
+        duration: 1,
+      });
+      gsap.to("#endcredits", {
+        color: beige,
       });
 
       isDarkMode = true;
@@ -346,6 +384,21 @@ const coderushlink =
       gsap.to("#homeicon2", {
         fill: brown,
         duration: 1,
+      });
+      gsap.to("#homeicon3", {
+        fill: brown,
+        duration: 1,
+      });
+      gsap.to("#contacttitle h1", {
+        color: orange,
+        duration: 1,
+      });
+      gsap.to("#navline4", {
+        backgroundColor: orange,
+        duration: 1,
+      });
+      gsap.to("#endcredits", {
+        color: brown,
       });
 
       isDarkMode = false;
@@ -437,8 +490,12 @@ const coderushlink =
         setTheme(false);
       });
   }
+}
 
+//onloadwindows
+{
   window.addEventListener("load", () => {
+    
     const prefersDark =
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -1694,25 +1751,29 @@ const coderushlink =
         });
       }
     }
+
+    ScrollTrigger.refresh();
   });
 }
 
 //transition section 1
-if (window.matchMedia("(max-width: 768px)").matches) {
-  const s1s = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#herosection",
-      scroller: "body",
-      start: "bottom 75%",
-      end: "bottom 30%",
-      scrub: true,
-    },
-  });
-  s1s.to(["#post2", "#resume"], {
-    scale: 2,
-    stagger: 0.5,
-    opacity: 0,
-  });
+{
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const s1s = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#herosection",
+        scroller: "body",
+        start: "bottom 75%",
+        end: "bottom 60%",
+        scrub: true,
+      },
+    });
+    s1s.to(["#post2", "#resume"], {
+      scale: 2,
+      stagger: 0.5,
+      opacity: 0,
+    });
+  }
 }
 
 //section2
@@ -2106,7 +2167,8 @@ if (window.matchMedia("(max-width: 768px)").matches) {
       scrollTrigger: {
         trigger: "#skillsection",
         scroller: "body",
-        start: "top 50%",
+        start: "top 60%",
+        end: "bottom bottom ",
         scrub: true,
       },
     });
@@ -2281,196 +2343,232 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     //listcontent tap animation
     ["box1", "box2", "box3", "box4"].forEach(setupBoxToggle);
   } else {
+    //listcontent cursor animations
+    {
+      document.querySelectorAll(".listcontent").forEach((box) => {
+        box.addEventListener("mouseenter", () => {
+          const boxtextcontent = box.querySelector("h3").textContent;
+          gsap.to("#cursor h4", {
+            textContent: boxtextcontent,
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "20vw",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+        box.addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+      });
+    }
     //listcontent hover animations
     {
-      document.querySelector(".box1").addEventListener("mouseenter", () => {
-        gsap.to(".box1", {
-          backgroundColor: "rgba(255,255,255,0.7)",
-          scale: 0.95,
+      {
+        document.querySelector(".box1").addEventListener("mouseenter", () => {
+          gsap.to(".box1", {
+            backgroundColor: "rgba(255,255,255,0.7)",
+            scale: 0.95,
+          });
         });
-      });
-      document.querySelector(".box1").addEventListener("mouseleave", () => {
-        gsap.to(".box1", {
-          backgroundColor: "rgba(255,255,255,0.2)",
-          scale: 1,
+        document.querySelector(".box1").addEventListener("mouseleave", () => {
+          gsap.to(".box1", {
+            backgroundColor: "rgba(255,255,255,0.2)",
+            scale: 1,
+          });
         });
-      });
-    }
-    {
-      document.querySelector(".box2").addEventListener("mouseenter", () => {
-        gsap.to(".box2", {
-          backgroundColor: "rgba(255,255,255,0.7)",
-          scale: 0.95,
+      }
+      {
+        document.querySelector(".box2").addEventListener("mouseenter", () => {
+          gsap.to(".box2", {
+            backgroundColor: "rgba(255,255,255,0.7)",
+            scale: 0.95,
+          });
         });
-      });
-      document.querySelector(".box2").addEventListener("mouseleave", () => {
-        gsap.to(".box2", {
-          backgroundColor: "rgba(255,255,255,0.2)",
-          scale: 1,
+        document.querySelector(".box2").addEventListener("mouseleave", () => {
+          gsap.to(".box2", {
+            backgroundColor: "rgba(255,255,255,0.2)",
+            scale: 1,
+          });
         });
-      });
-    }
-    {
-      document.querySelector(".box3").addEventListener("mouseenter", () => {
-        gsap.to(".box3", {
-          backgroundColor: "rgba(255,255,255,0.7)",
-          scale: 0.95,
+      }
+      {
+        document.querySelector(".box3").addEventListener("mouseenter", () => {
+          gsap.to(".box3", {
+            backgroundColor: "rgba(255,255,255,0.7)",
+            scale: 0.95,
+          });
         });
-      });
-      document.querySelector(".box3").addEventListener("mouseleave", () => {
-        gsap.to(".box3", {
-          backgroundColor: "rgba(255,255,255,0.2)",
-          scale: 1,
+        document.querySelector(".box3").addEventListener("mouseleave", () => {
+          gsap.to(".box3", {
+            backgroundColor: "rgba(255,255,255,0.2)",
+            scale: 1,
+          });
         });
-      });
-    }
-    {
-      document.querySelector(".box4").addEventListener("mouseenter", () => {
-        gsap.to(".box4", {
-          backgroundColor: "rgba(255,255,255,0.7)",
-          scale: 0.95,
+      }
+      {
+        document.querySelector(".box4").addEventListener("mouseenter", () => {
+          gsap.to(".box4", {
+            backgroundColor: "rgba(255,255,255,0.7)",
+            scale: 0.95,
+          });
         });
-      });
-      document.querySelector(".box4").addEventListener("mouseleave", () => {
-        gsap.to(".box4", {
-          backgroundColor: "rgba(255,255,255,0.2)",
-          scale: 1,
+        document.querySelector(".box4").addEventListener("mouseleave", () => {
+          gsap.to(".box4", {
+            backgroundColor: "rgba(255,255,255,0.2)",
+            scale: 1,
+          });
         });
-      });
+      }
     }
 
     //websitepreview cursor animations
     {
-      document
-        .querySelector(".box1 .previewwebsite")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Preview Website",
+      {
+        document
+          .querySelector(".box1 .previewwebsite")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Preview Website",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "10vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "10vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box1 .previewwebsite")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box1 .previewwebsite")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
+      }
+      {
+        document
+          .querySelector(".box2 .previewwebsite")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Preview Website",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "10vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-        });
-    }
-    {
-      document
-        .querySelector(".box2 .previewwebsite")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Preview Website",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "10vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box2 .previewwebsite")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box2 .previewwebsite")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
+      }
+      {
+        document
+          .querySelector(".box3 .previewwebsite")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Preview Website",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "10vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-        });
-    }
-    {
-      document
-        .querySelector(".box3 .previewwebsite")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Preview Website",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "10vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box3 .previewwebsite")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box3 .previewwebsite")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
+      }
+      {
+        document
+          .querySelector(".box4 .previewwebsite")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Preview Website",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "10vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-        });
-    }
-    {
-      document
-        .querySelector(".box4 .previewwebsite")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Preview Website",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "10vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box4 .previewwebsite")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box4 .previewwebsite")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
+      }
     }
 
     //expandicon cursor   animation
@@ -2523,136 +2621,138 @@ if (window.matchMedia("(max-width: 768px)").matches) {
 
     //gotogithub cursor animations
     {
-      document
-        .querySelector(".box1 .gotogithub")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Go to Github Source",
+      {
+        document
+          .querySelector(".box1 .gotogithub")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Go to Github Source",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "15vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "15vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box1 .gotogithub")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box1 .gotogithub")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
+      }
+      {
+        document
+          .querySelector(".box2 .gotogithub")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Go to Github Source",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "15vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-        });
-    }
-    {
-      document
-        .querySelector(".box2 .gotogithub")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Go to Github Source",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "15vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box2 .gotogithub")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box2 .gotogithub")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
+      }
+      {
+        document
+          .querySelector(".box3 .gotogithub")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Go to Github Source",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "15vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-        });
-    }
-    {
-      document
-        .querySelector(".box3 .gotogithub")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Go to Github Source",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "15vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box3 .gotogithub")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box3 .gotogithub")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
+      }
+      {
+        document
+          .querySelector(".box4 .gotogithub")
+          .addEventListener("mouseenter", () => {
+            gsap.to("#cursor h4", {
+              textContent: "Go to Github Source",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "20px",
+              height: "fit-content",
+              width: "15vw",
+              padding: "0vh 1.8vh",
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-        });
-    }
-    {
-      document
-        .querySelector(".box4 .gotogithub")
-        .addEventListener("mouseenter", () => {
-          gsap.to("#cursor h4", {
-            textContent: "Go to Github Source",
-          });
-          gsap.to("#cursor", {
-            borderRadius: "20px",
-            height: "fit-content",
-            width: "15vw",
-            padding: "0vh 1.8vh",
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
 
-      document
-        .querySelector(".box4 .gotogithub")
-        .addEventListener("mouseleave", () => {
-          gsap.to("#cursor h4", {
-            textContent: "",
+        document
+          .querySelector(".box4 .gotogithub")
+          .addEventListener("mouseleave", () => {
+            gsap.to("#cursor h4", {
+              textContent: "",
+            });
+            gsap.to("#cursor", {
+              borderRadius: "50%",
+              height: "30px",
+              width: "30px",
+              padding: 0,
+              duration: 0.5,
+              ease: "back.out",
+            });
           });
-          gsap.to("#cursor", {
-            borderRadius: "50%",
-            height: "30px",
-            width: "30px",
-            padding: 0,
-            duration: 0.5,
-            ease: "back.out",
-          });
-        });
+      }
     }
   }
 }
@@ -2662,8 +2762,10 @@ if (window.matchMedia("(max-width: 768px)").matches) {
   if (window.matchMedia("(max-width: 768px)").matches) {
     const s3s = gsap.timeline({
       scrollTrigger: {
-        trigger: "#navline3",
+        trigger: "#projectsection",
         scroller: "body",
+        start: "top 80%",
+        end: "bottom bottom",
         scrub: true,
       },
     });
@@ -2693,7 +2795,8 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     });
     s3s.from(".listcontent", {
       opacity: 0,
-      stagger: 0.5,
+      scale: 2,
+      stagger: 0.8,
       y: 200,
     });
   } else {
@@ -2704,7 +2807,7 @@ if (window.matchMedia("(max-width: 768px)").matches) {
           scroller: "body",
           scrub: true,
           start: "top 90%",
-          end: "top 0%", // ends just before pinning starts
+          end: "top", // ends just before pinning starts
         },
       })
       .from("#projecttitle", {
@@ -2713,7 +2816,7 @@ if (window.matchMedia("(max-width: 768px)").matches) {
         x: -800,
       })
       .from("#projectsectionbg", {
-        scale: 0.5,
+        scale: 0,
         opacity: 0,
         y: 800,
       });
@@ -2780,6 +2883,207 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     });
     s3s.to("#projectsectionbg", {
       opacity: 0.99,
+    });
+  }
+}
+
+//section 4
+{
+  //hover animations
+  {
+    const list2contents = document.querySelectorAll(".list2content");
+    list2contents.forEach((contentbox) => {
+      contentbox.addEventListener("mouseenter", () => {
+        gsap.to(contentbox, {
+          backgroundColor: "rgba(255,255,255,0.5)",
+          scale: 0.95,
+        });
+      });
+      contentbox.addEventListener("mouseleave", () => {
+        gsap.to(contentbox, {
+          backgroundColor: "rgba(255,255,255,0.2)",
+          scale: 1,
+        });
+      });
+    });
+  }
+  //cursor text animations
+  {
+    document.querySelector("#mountain").addEventListener("mouseenter", () => {
+      gsap.to("#cursor h4", {
+        textContent: "This is just a mountain....",
+      });
+      gsap.to("#cursor", {
+        borderRadius: "20px",
+        height: "fit-content",
+        width: "20vw",
+        padding: "0vh 1.8vh",
+        duration: 0.5,
+        ease: "back.out",
+      });
+    });
+
+    document.querySelector("#mountain").addEventListener("mouseleave", () => {
+      gsap.to("#cursor h4", {
+        textContent: "",
+      });
+      gsap.to("#cursor", {
+        borderRadius: "50%",
+        height: "30px",
+        width: "30px",
+        padding: 0,
+        duration: 0.5,
+        ease: "back.out",
+      });
+    });
+  }
+}
+
+//transition animations section4
+{
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    const s4s = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#contactsection",
+        scrub: true,
+        start: "top 80%",
+        end: "top 0%",
+      },
+    });
+    s4s.from("#contacttitle h1", {
+      scale: 3,
+      opacity: 0,
+    });
+    s4s.from("#contactsectionbg", {
+      scale: 0,
+      opacity: 0,
+      y: 80,
+    });
+    s4s.from("#navline4", {
+      width: 0,
+      duration: 1,
+    });
+    s4s.from("#contactsectioncloud", {
+      x: 20,
+      opacity: 0,
+      scale: 1.5,
+      onComplete: () => {
+        gsap.to("#contactsectioncloud", {
+          x: "-4vw",
+          duration: 8,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s4s.from(".list2content", {
+      y: 500,
+      opacity: 0,
+      stagger: 0.8,
+    });
+    s4s.from("#contactsectioncloud2", {
+      x: -20,
+      opacity: 0,
+      scale: 1.5,
+      onComplete: () => {
+        gsap.to("#contactsectioncloud2", {
+          x: "-4vw",
+          y: "-1vw",
+          duration: 16,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+
+    s4s.from(".list2seperator", {
+      opacity: 0,
+      stagger: 0.8,
+    });
+  } else {
+    const s4spretl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#contactsection",
+        scrub: true,
+        start: "top 90%",
+        end: "top 0%",
+      },
+    });
+    s4spretl.from("#contacttitle h1", {
+      scale: 3,
+      opacity: 0,
+      x: 800,
+    });
+    s4spretl.from("#contactsectionbg", {
+      scale: 0,
+      opacity: 0,
+      y: 80,
+    });
+
+    const s4s = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#contactsection",
+        scroller: "body",
+        scrub: true,
+        start: "top top",
+        end: "+=100%",
+        pin: true,
+      },
+    });
+    s4s.from("#navline4", {
+      width: 0,
+      duration: 1,
+    });
+    s4s.from("#homeicon3", {
+      y: 40,
+      opacity: 0,
+    });
+    s4s.from("#mountain", {
+      x: 40,
+      opacity: 0,
+    });
+    s4s.from("#contactsectioncloud", {
+      x: 20,
+      opacity: 0,
+      scale: 1.5,
+      onComplete: () => {
+        gsap.to("#contactsectioncloud", {
+          x: "-4vw",
+          duration: 8,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s4s.from("#contactsectioncloud2", {
+      x: -20,
+      opacity: 0,
+      scale: 1.5,
+      onComplete: () => {
+        gsap.to("#contactsectioncloud2", {
+          x: "-4vw",
+          y: "-1vw",
+          duration: 16,
+          yoyo: true,
+          repeat: -1,
+          ease: "power1.inOut",
+        });
+      },
+    });
+    s4s.from(".list2seperator", {
+      x: -200,
+      y: 50,
+      opacity: 0,
+      stagger: 0.8,
+    });
+    s4s.from(".list2content", {
+      x: -20,
+      y: 50,
+      opacity: 0,
+      stagger: 0.8,
     });
   }
 }

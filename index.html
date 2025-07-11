@@ -39,12 +39,30 @@
           ></path>
         </svg>
         <div id="navlinks">
-          <a class="link" onclick="closemenu()" href="#herosection">Home</a>
-          <a class="link" id="edu" onclick="closemenu()" href="#skillsection"
+          <a
+            class="link"
+            onclick="closemenu(); scrollToSectionEnd(event)"
+            href="#herosection"
+            >Home</a
+          >
+          <a
+            class="link"
+            onclick="closemenu(); scrollToSectionEnd(event)"
+            href="#projectsection"
             >Education</a
           >
-          <a class="link" href="#">Projects</a>
-          <a class="link" href="#">Contact</a>
+          <a
+            class="link"
+            onclick="closemenu(); scrollToSectionEnd(event)"
+            href="#contactsection"
+            >Projects</a
+          >
+          <a
+            class="link"
+            onclick="closemenu(); scrollToSectionEnd(event)"
+            href="#endcredits"
+            >Contact</a
+          >
           <a class="link" href="#">Hire</a>
         </div>
         <div id="socialnav">
@@ -230,15 +248,20 @@
           </div>
         </div>
         <div id="homebuttonsec">
-          <svg
-            id="homeicon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
+          <a
+            onclick="closemenu(); scrollToSectionEnd(event)"
+            href="#herosection"
           >
-            <path
-              d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"
-            />
-          </svg>
+            <svg
+              id="homeicon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 -960 960 960"
+            >
+              <path
+                d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"
+              />
+            </svg>
+          </a>
         </div>
       </div>
       <img id="skillsectionbg" src="assets/section2/skillsectionbg.png" />
@@ -248,7 +271,11 @@
     <section id="projectsection">
       <div class="projectsectioncontainer">
         <div id="projecttitlecontainer">
-          <div class="homeiconcontainer">
+          <div
+            class="homeiconcontainer"
+            onclick="closemenu(); scrollToSectionEnd(event)"
+            href="#herosection"
+          >
             <svg
               id="homeicon2"
               xmlns="http://www.w3.org/2000/svg"
@@ -261,6 +288,7 @@
           </div>
           <div id="projecttitle">
             <h1>PROJECTS</h1>
+
             <svg
               id="githubicon"
               xmlns="http://www.w3.org/2000/svg"
@@ -468,16 +496,21 @@
     <section id="contactsection">
       <div id="contactsectioncontainer">
         <div id="contacttitle">
-          <h1>CONTACT </h1>
-          <svg
-            id="homeicon3"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 -960 960 960"
+          <h1>CONTACT</h1>
+          <a
+            onclick="closemenu(); scrollToSectionEnd(event)"
+            href="#herosection"
           >
-            <path
-              d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"
-            />
-          </svg>
+            <svg
+              id="homeicon3"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 -960 960 960"
+            >
+              <path
+                d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"
+              />
+            </svg>
+          </a>
         </div>
         <div id="navline4"></div>
         <div id="listgrid">
@@ -501,7 +534,7 @@
 
             <div class="list2content bluelist2">
               <h2>LINKEDIN</h2>
-              <div class="contacticon"  id="contactlinkedin">
+              <div class="contacticon" id="contactlinkedin">
                 <svg
                   class="list2icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -517,7 +550,7 @@
 
             <div class="list2content brownlist2">
               <h2>INTERNSHALA</h2>
-              <div class="contacticon"  id="contactinternshala">
+              <div class="contacticon" id="contactinternshala">
                 <svg
                   class="list2icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -535,7 +568,7 @@
             <div class="list2seperator greenlist2sep sminvisible"></div>
             <div class="list2content greenlist2">
               <h2>WHATSAPP</h2>
-              <div class="contacticon"  id="contactwhatsapp">
+              <div class="contacticon" id="contactwhatsapp">
                 <svg
                   class="list2icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -551,7 +584,7 @@
 
             <div class="list2content pinklist2">
               <h2>TELEGRAM</h2>
-              <div class="contacticon"  id="contacttelegram">
+              <div class="contacticon" id="contacttelegram">
                 <svg
                   class="list2icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -567,7 +600,7 @@
 
             <div class="list2content graylist2">
               <h2>GITHUB</h2>
-              <div class="contacticon"  id="contactgithub">
+              <div class="contacticon" id="contactgithub">
                 <svg
                   class="list2icon"
                   xmlns="http://www.w3.org/2000/svg"
@@ -586,11 +619,20 @@
       <img id="contactsectionbg" src="/assets/section4/s2.webp" />
       <img id="contactsectioncloud" src="/cloud.png" />
       <img id="contactsectioncloud2" src="/cloud.png" />
+      <img id="mountain" src="/assets/section4/mountain.png">
     </section>
+
+    <div id="endcredits">Made & Designed by Mayank Sharma</div>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
       integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"
+      integrity="sha512-kz526itdNcpyMs18TLPOhsnIeOIO1JywWKbbF77zR+ZKpZ4gwubXhwaURHpt5Se9AAqSK2j8ID0LnfXsB2Jkjg=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>

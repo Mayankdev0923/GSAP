@@ -60,6 +60,10 @@ body {
   font-weight: 20;
   color: var(--beige);
 }
+.noscroll {
+  overflow: hidden;
+  height: 100vh;
+}
 
 /* section 1 */
 @media screen {
@@ -652,7 +656,6 @@ body {
     height: 100%;
     padding: 2vw 4vw;
     position: relative;
-    margin-bottom: 20vh;
   }
   .sectioncontainer {
     height: 100%;
@@ -941,9 +944,6 @@ body {
     height: fit-content;
     padding: 2vw 4vw;
     position: relative;
-    margin-top: 20vh;
-    overflow: hidden;
-    padding-bottom: 20vh;
   }
   .smvisible {
     display: block;
@@ -1362,12 +1362,10 @@ body {
     display: none;
   }
   #projectsection {
-    margin-bottom: 20vw;
     height: fit-content;
     padding: 0vw 6vw;
     overflow: visible;
     min-height: 100%;
-    overflow: hidden;
   }
   .projectsectioncontainer {
     height: fit-content;
@@ -1557,6 +1555,7 @@ body {
     background-color: var(--orange);
     margin: auto 0vw;
     border-radius: 2rem;
+    z-index: 1;
   }
   .list2content {
     display: flex;
@@ -1565,7 +1564,8 @@ body {
     border-radius: 1rem;
     padding: 0.5vw 1vw;
     gap: 1vw;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 3;
   }
   .list2content h2 {
     font-size: 2vw;
@@ -1598,7 +1598,6 @@ body {
     bottom: 25%;
     left: 20%;
   }
-
 
   /* listcontent/ */
   .orangelist2 {
@@ -1645,57 +1644,90 @@ body {
   .graylist2sep {
     background-color: var(--dark-gray);
   }
+  #mountain {
+    position: absolute;
+    width: 50vw;
+    bottom: 0%;
+    right: 5%;
+    z-index:2;
+  }
 }
 @media (max-width: 768px) {
-  #contactsection{
+  #mountain {
+    display: none;
+  }
+  #contactsection {
     padding: 4vw 6vw;
+    overflow: hidden;
   }
   #listgrid {
     flex-direction: column;
     padding-top: 8vw;
     gap: 4vw;
   }
-  #contacttitle h1{
+  #contacttitle h1 {
     height: fit-content;
     font-size: 14vw;
     line-break: anywhere;
     padding: 0%;
     justify-content: center;
   }
-  #homeicon3{
+  #homeicon3 {
     display: none;
   }
-  #navline4{
+  #navline4 {
     height: 1vw;
   }
-  .list2col{
+  .list2col {
     gap: 4vw;
   }
-  .list2content{
-    padding: 4vw ;
+  .list2content {
+    padding: 4vw;
   }
-  .list2content h2{
+  .list2content h2 {
     font-size: 6vw;
   }
-  .list2icon{
+  .list2icon {
     height: 8vw;
     width: 8vw;
   }
-  .list2seperator{
+  .list2seperator {
     height: 0.7vw;
   }
-  #contactsectionbg{
+  #contactsectionbg {
     rotate: 90deg;
     left: -90%;
-    top:70%;
+    top: 70%;
     width: 80vh;
   }
-  #contactsectioncloud2{
+  #contactsectioncloud2 {
     display: none;
   }
-  #contactsectioncloud{
-    height:14vw;
-    top:8%;
-    right:10%;
+  #contactsectioncloud {
+    height: 14vw;
+    top: 8%;
+    right: 10%;
+  }
+}
+
+/* //credits */
+@media screen {
+  #endcredits {
+    color: var(--brown);
+    text-align: center;
+    font-size: 1vw;
+    font-family: "gilroy";
+    letter-spacing: 0.5px;
+    height: 5vh;
+  }
+}
+@media (max-width: 768px){
+  #endcredits {
+    color: var(--brown);
+    text-align: center;
+    font-size: 3vw;
+    font-family: "gilroy";
+    letter-spacing: 0.5px;
+    height: 5vh;
   }
 }
