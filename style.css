@@ -9,6 +9,7 @@
   --darkblue: #5271ff;
   --orange: #f9a01b;
   --dark-gray: #545454;
+  --green: #7ed957;
 }
 @font-face {
   font-family: "gilroy";
@@ -121,6 +122,11 @@ body {
     width: 2.5vw;
     cursor: pointer;
     z-index: 2;
+  }
+  #lightmodecontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   #lightmode {
     display: none;
@@ -646,6 +652,7 @@ body {
     height: 100%;
     padding: 2vw 4vw;
     position: relative;
+    margin-bottom: 20vh;
   }
   .sectioncontainer {
     height: 100%;
@@ -907,7 +914,7 @@ body {
     z-index: 99;
   }
   #homeicon {
-    fill: var(--orange);
+    fill: var(--brown);
     height: 6vw;
     width: 6vw;
     cursor: pointer;
@@ -935,9 +942,8 @@ body {
     padding: 2vw 4vw;
     position: relative;
     margin-top: 20vh;
-        overflow: hidden;
-        padding-bottom: 20vh;
-
+    overflow: hidden;
+    padding-bottom: 20vh;
   }
   .smvisible {
     display: block;
@@ -1415,6 +1421,14 @@ body {
     border-radius: 2rem;
     padding: 3vw 4vw;
     border: solid 0.1vw;
+    position: relative;
+    overflow: hidden;
+  }
+  .carddecor {
+    position: absolute;
+    height: 80%;
+    bottom: -30%;
+    right: 0%;
   }
   .box1 {
     background-color: var(--beige);
@@ -1479,11 +1493,209 @@ body {
     height: 20vw;
   }
   #projectsectioncloud2 {
-    top: 82%;
-    left: 65%;
-    height: 10vw;
+    display: none;
   }
   .previewwebsite {
     display: none;
+  }
+}
+
+/* Section 4 */
+@media screen {
+  #contactsection {
+    height: 100%;
+    width: 100%;
+    padding: 2vw 6vw;
+    overflow: hidden;
+    position: relative;
+  }
+  #contactsectioncontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+  #contacttitle {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #contacttitle h1 {
+    font-size: 4vw;
+    line-height: 0;
+    font-family: "brick";
+    color: var(--orange);
+  }
+  #navline4 {
+    height: 0.4vw;
+    background-color: var(--orange);
+    margin: auto 0vw;
+    border-radius: 2rem; /* Optional: for rounded edges */
+  }
+  #homeicon3 {
+    fill: var(--brown);
+    height: 4vw;
+    width: 4vw;
+    cursor: pointer;
+  }
+  #listgrid {
+    padding-top: 2vw;
+    display: flex;
+    gap: 4vw;
+  }
+  .list2col {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+  }
+  .list2seperator {
+    height: 0.2vw;
+    background-color: var(--orange);
+    margin: auto 0vw;
+    border-radius: 2rem;
+  }
+  .list2content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1rem;
+    padding: 0.5vw 1vw;
+    gap: 1vw;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  .list2content h2 {
+    font-size: 2vw;
+    line-height: 0;
+    font-family: "brick";
+  }
+  .list2icon {
+    height: 3vw;
+    width: 3vw;
+    cursor: pointer;
+  }
+
+  #contactsectionbg {
+    position: absolute;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+  #contactsectioncloud {
+    position: absolute;
+    height: 10vw;
+    top: 5%;
+    right: 20%;
+  }
+  #contactsectioncloud2 {
+    position: absolute;
+    height: 5vw;
+    bottom: 25%;
+    left: 20%;
+  }
+
+
+  /* listcontent/ */
+  .orangelist2 {
+    color: var(--orange);
+    fill: var(--orange);
+  }
+  .bluelist2 {
+    color: var(--light-blue);
+    fill: var(--light-blue);
+  }
+  .brownlist2 {
+    color: var(--brown);
+    fill: var(--brown);
+  }
+  .greenlist2 {
+    color: var(--green);
+    fill: var(--green);
+  }
+  .pinklist2 {
+    color: var(--pink);
+    fill: var(--pink);
+  }
+  .graylist2 {
+    color: var(--dark-gray);
+    fill: var(--dark-gray);
+  }
+
+  /* seperators */
+  .orangelist2sep {
+    background-color: var(--orange);
+  }
+  .bluelist2sep {
+    background-color: var(--light-blue);
+  }
+  .brownlist2sep {
+    background-color: var(--brown);
+  }
+  .greenlist2sep {
+    background-color: var(--green);
+  }
+  .pinklist2sep {
+    background-color: var(--pink);
+  }
+  .graylist2sep {
+    background-color: var(--dark-gray);
+  }
+}
+@media (max-width: 768px) {
+  #contactsection{
+    padding: 4vw 6vw;
+  }
+  #listgrid {
+    flex-direction: column;
+    padding-top: 8vw;
+    gap: 4vw;
+  }
+  #contacttitle h1{
+    height: fit-content;
+    font-size: 14vw;
+    line-break: anywhere;
+    padding: 0%;
+    justify-content: center;
+  }
+  #homeicon3{
+    display: none;
+  }
+  #navline4{
+    height: 1vw;
+  }
+  .list2col{
+    gap: 4vw;
+  }
+  .list2content{
+    padding: 4vw ;
+  }
+  .list2content h2{
+    font-size: 6vw;
+  }
+  .list2icon{
+    height: 8vw;
+    width: 8vw;
+  }
+  .list2seperator{
+    height: 0.7vw;
+  }
+  #contactsectionbg{
+    rotate: 90deg;
+    left: -90%;
+    top:70%;
+    width: 80vh;
+  }
+  #contactsectioncloud2{
+    display: none;
+  }
+  #contactsectioncloud{
+    height:14vw;
+    top:8%;
+    right:10%;
   }
 }

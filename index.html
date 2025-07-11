@@ -10,7 +10,7 @@
     />
     <title>LocalHost</title>
   </head>
-  
+
   <body>
     <div id="cursor"><h4></h4></div>
     <div id="menublur"></div>
@@ -61,18 +61,20 @@
               d="M11.01,3.05C6.51,3.54,3,7.36,3,12c0,4.97,4.03,9,9,9c4.63,0,8.45-3.5,8.95-8c0.09-0.79-0.78-1.42-1.54-0.95 c-0.84,0.54-1.84,0.85-2.91,0.85c-2.98,0-5.4-2.42-5.4-5.4c0-1.06,0.31-2.06,0.84-2.89C12.39,3.94,11.9,2.98,11.01,3.05z"
             ></path>
           </svg>
-          <svg
-            class="uimode"
-            id="lightmode"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="#fffdf0"
-            viewBox="1 0.55 21.99 21.9"
-          >
-            <path d="M0 0h24v24H0V0z" fill="none"></path>
-            <path
-              d="M6.05 4.14l-.39-.39c-.39-.39-1.02-.38-1.4 0l-.01.01c-.39.39-.39 1.02 0 1.4l.39.39c.39.39 1.01.39 1.4 0l.01-.01c.39-.38.39-1.02 0-1.4zM3.01 10.5H1.99c-.55 0-.99.44-.99.99v.01c0 .55.44.99.99.99H3c.56.01 1-.43 1-.98v-.01c0-.56-.44-1-.99-1zm9-9.95H12c-.56 0-1 .44-1 .99v.96c0 .55.44.99.99.99H12c.56.01 1-.43 1-.98v-.97c0-.55-.44-.99-.99-.99zm7.74 3.21c-.39-.39-1.02-.39-1.41-.01l-.39.39c-.39.39-.39 1.02 0 1.4l.01.01c.39.39 1.02.39 1.4 0l.39-.39c.39-.39.39-1.01 0-1.4zm-1.81 15.1l.39.39c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-.39-.39c-.39-.39-1.02-.38-1.4 0-.4.4-.4 1.02-.01 1.41zM20 11.49v.01c0 .55.44.99.99.99H22c.55 0 .99-.44.99-.99v-.01c0-.55-.44-.99-.99-.99h-1.01c-.55 0-.99.44-.99.99zM12 5.5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-.01 16.95H12c.55 0 .99-.44.99-.99v-.96c0-.55-.44-.99-.99-.99h-.01c-.55 0-.99.44-.99.99v.96c0 .55.44.99.99.99zm-7.74-3.21c.39.39 1.02.39 1.41 0l.39-.39c.39-.39.38-1.02 0-1.4l-.01-.01c-.39-.39-1.02-.39-1.41 0l-.39.39c-.38.4-.38 1.02.01 1.41z"
-            ></path>
-          </svg>
+          <div id="lightmodecontainer">
+            <svg
+              class="uimode"
+              id="lightmode"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#fffdf0"
+              viewBox="1 0.55 21.99 21.9"
+            >
+              <!-- <path d="M0 0h24v24H0V0z" fill="none"></path> -->
+              <path
+                d="M6.05 4.14l-.39-.39c-.39-.39-1.02-.38-1.4 0l-.01.01c-.39.39-.39 1.02 0 1.4l.39.39c.39.39 1.01.39 1.4 0l.01-.01c.39-.38.39-1.02 0-1.4zM3.01 10.5H1.99c-.55 0-.99.44-.99.99v.01c0 .55.44.99.99.99H3c.56.01 1-.43 1-.98v-.01c0-.56-.44-1-.99-1zm9-9.95H12c-.56 0-1 .44-1 .99v.96c0 .55.44.99.99.99H12c.56.01 1-.43 1-.98v-.97c0-.55-.44-.99-.99-.99zm7.74 3.21c-.39-.39-1.02-.39-1.41-.01l-.39.39c-.39.39-.39 1.02 0 1.4l.01.01c.39.39 1.02.39 1.4 0l.39-.39c.39-.39.39-1.01 0-1.4zm-1.81 15.1l.39.39c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-.39-.39c-.39-.39-1.02-.38-1.4 0-.4.4-.4 1.02-.01 1.41zM20 11.49v.01c0 .55.44.99.99.99H22c.55 0 .99-.44.99-.99v-.01c0-.55-.44-.99-.99-.99h-1.01c-.55 0-.99.44-.99.99zM12 5.5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-.01 16.95H12c.55 0 .99-.44.99-.99v-.96c0-.55-.44-.99-.99-.99h-.01c-.55 0-.99.44-.99.99v.96c0 .55.44.99.99.99zm-7.74-3.21c.39.39 1.02.39 1.41 0l.39-.39c.39-.39.38-1.02 0-1.4l-.01-.01c-.39-.39-1.02-.39-1.41 0l-.39.39c-.38.4-.38 1.02.01 1.41z"
+              ></path>
+            </svg>
+          </div>
           <a id="navicon" class="githubnav" href="">
             <svg
               id="navicon"
@@ -285,6 +287,7 @@
                   alerts. Used ReactJS, Tailwind CSS for frontend, firebase for
                   storage and authentication for admin page.
                 </h3>
+                <img src="/assets/section3/tl.webp" class="carddecor" />
               </div>
               <div id="listiconscontainer">
                 <a onclick="openpreviewwoodward()">
@@ -298,7 +301,10 @@
                     />
                   </svg>
                 </a>
-                <a href="https://github.com/Mayankdev0923/woodward2" target="_blank">
+                <a
+                  href="https://github.com/Mayankdev0923/woodward2"
+                  target="_blank"
+                >
                   <svg
                     class="listicon orangelink gotogithub"
                     xmlns="http://www.w3.org/2000/svg"
@@ -321,6 +327,7 @@
                   Showcased at Innoverse36, SGT University. A useful platform
                   for trading and encouraging energy reuse.
                 </h3>
+                <img src="/assets/section3/tl.webp" class="carddecor" />
               </div>
               <div id="listiconscontainer">
                 <a onclick="openpreviewenergon()">
@@ -334,7 +341,10 @@
                     />
                   </svg>
                 </a>
-                <a href="https://github.com/Mayankdev0923/Energon" target="_blank">
+                <a
+                  href="https://github.com/Mayankdev0923/Energon"
+                  target="_blank"
+                >
                   <svg
                     class="listicon bluelink gotogithub"
                     xmlns="http://www.w3.org/2000/svg"
@@ -356,6 +366,7 @@
                   This is the official Website for Google Developer Group that
                   me and my team has been working on currently.
                 </h3>
+                <img src="/assets/section3/tl.webp" class="carddecor" />
               </div>
               <div id="listiconscontainer">
                 <a onclick="openpreviewgdg()">
@@ -369,7 +380,10 @@
                     />
                   </svg>
                 </a>
-                <a href="https://github.com/Mayankdev0923/GDG-mainsite" target="_blank">
+                <a
+                  href="https://github.com/Mayankdev0923/GDG-mainsite"
+                  target="_blank"
+                >
                   <svg
                     class="listicon brownlink gotogithub"
                     xmlns="http://www.w3.org/2000/svg"
@@ -392,6 +406,7 @@
                   national level hackathon in Gurugram University, with a total
                   footfall of over 1500.
                 </h3>
+                <img src="/assets/section3/tl.webp" class="carddecor" />
               </div>
               <div id="listiconscontainer">
                 <a onclick="openpreviewcoderush()">
@@ -405,7 +420,10 @@
                     />
                   </svg>
                 </a>
-                <a href="https://github.com/Mayankdev0923/coderush" target="_blank">
+                <a
+                  href="https://github.com/Mayankdev0923/coderush"
+                  target="_blank"
+                >
                   <svg
                     class="listicon pinklink gotogithub"
                     xmlns="http://www.w3.org/2000/svg"
@@ -426,7 +444,6 @@
                 id="websiteframe"
                 src="https://www.4wildflowerhospitality.in/"
                 frameborder="0"
-                width="1080px"
               ></iframe>
               <div id="expandingbutton">
                 <svg
@@ -448,7 +465,128 @@
       <img id="projectsectionbg" src="/assets/section3/projectsectionbg.png" />
     </section>
 
-    <div class="space"></div>
+    <section id="contactsection">
+      <div id="contactsectioncontainer">
+        <div id="contacttitle">
+          <h1>CONTACT </h1>
+          <svg
+            id="homeicon3"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+          >
+            <path
+              d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"
+            />
+          </svg>
+        </div>
+        <div id="navline4"></div>
+        <div id="listgrid">
+          <div class="list2col">
+            <div class="list2seperator orangelist2sep"></div>
+            <div class="list2content orangelist2">
+              <h2>MAIL</h2>
+              <div class="contacticon" id="contactmail">
+                <svg
+                  class="list2icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                >
+                  <path
+                    d="M640-624 284-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l356-356H280q-17 0-28.5-11.5T240-720q0-17 11.5-28.5T280-760h400q17 0 28.5 11.5T720-720v400q0 17-11.5 28.5T680-280q-17 0-28.5-11.5T640-320v-304Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="list2seperator orangelist2sep"></div>
+
+            <div class="list2content bluelist2">
+              <h2>LINKEDIN</h2>
+              <div class="contacticon"  id="contactlinkedin">
+                <svg
+                  class="list2icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                >
+                  <path
+                    d="M640-624 284-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l356-356H280q-17 0-28.5-11.5T240-720q0-17 11.5-28.5T280-760h400q17 0 28.5 11.5T720-720v400q0 17-11.5 28.5T680-280q-17 0-28.5-11.5T640-320v-304Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="list2seperator bluelist2sep"></div>
+
+            <div class="list2content brownlist2">
+              <h2>INTERNSHALA</h2>
+              <div class="contacticon"  id="contactinternshala">
+                <svg
+                  class="list2icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                >
+                  <path
+                    d="M640-624 284-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l356-356H280q-17 0-28.5-11.5T240-720q0-17 11.5-28.5T280-760h400q17 0 28.5 11.5T720-720v400q0 17-11.5 28.5T680-280q-17 0-28.5-11.5T640-320v-304Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="list2seperator brownlist2sep"></div>
+          </div>
+          <div class="list2col">
+            <div class="list2seperator greenlist2sep sminvisible"></div>
+            <div class="list2content greenlist2">
+              <h2>WHATSAPP</h2>
+              <div class="contacticon"  id="contactwhatsapp">
+                <svg
+                  class="list2icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                >
+                  <path
+                    d="M640-624 284-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l356-356H280q-17 0-28.5-11.5T240-720q0-17 11.5-28.5T280-760h400q17 0 28.5 11.5T720-720v400q0 17-11.5 28.5T680-280q-17 0-28.5-11.5T640-320v-304Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="list2seperator greenlist2sep"></div>
+
+            <div class="list2content pinklist2">
+              <h2>TELEGRAM</h2>
+              <div class="contacticon"  id="contacttelegram">
+                <svg
+                  class="list2icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                >
+                  <path
+                    d="M640-624 284-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l356-356H280q-17 0-28.5-11.5T240-720q0-17 11.5-28.5T280-760h400q17 0 28.5 11.5T720-720v400q0 17-11.5 28.5T680-280q-17 0-28.5-11.5T640-320v-304Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="list2seperator pinklist2sep"></div>
+
+            <div class="list2content graylist2">
+              <h2>GITHUB</h2>
+              <div class="contacticon"  id="contactgithub">
+                <svg
+                  class="list2icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 -960 960 960"
+                >
+                  <path
+                    d="M640-624 284-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l356-356H280q-17 0-28.5-11.5T240-720q0-17 11.5-28.5T280-760h400q17 0 28.5 11.5T720-720v400q0 17-11.5 28.5T680-280q-17 0-28.5-11.5T640-320v-304Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div class="list2seperator graylist2sep"></div>
+          </div>
+        </div>
+      </div>
+      <img id="contactsectionbg" src="/assets/section4/s2.webp" />
+      <img id="contactsectioncloud" src="/cloud.png" />
+      <img id="contactsectioncloud2" src="/cloud.png" />
+    </section>
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
