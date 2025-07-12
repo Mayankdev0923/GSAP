@@ -526,7 +526,7 @@ let currentSectionId = "#herosection";
 //onloadwindows
 {
   window.addEventListener("load", () => {
-    requestAnimationFrame(raf);
+    // requestAnimationFrame(raf);
 
     const prefersDark =
       window.matchMedia &&
