@@ -15,14 +15,10 @@ const lightblue = "#a1b2ff";
 const orange = "#f9a01b";
 const darkblue = "#5271ff";
 const darkbrown = "#966e50";
-const woodwardlink =
-  "https://webflow.com/made-in-webflow/website/relume-cloneable";
-const energonlink =
-  "https://webflow.com/made-in-webflow/website/vimeo-background-video-play-button";
-const gdglink =
-  "https://webflow.com/made-in-webflow/website/Interactive-Presentation";
-const coderushlink =
-  "https://webflow.com/made-in-webflow/website/True-Responsive-Testing";
+const woodwardlink = "https://www.4wildflowerhospitality.in/";
+const energonlink = "";
+const gdglink = "";
+const coderushlink = "";
 const lenis = new Lenis({
   duration: 1.2, // adjust scroll speed
   smooth: true,
@@ -54,9 +50,9 @@ let currentSectionId = "#herosection";
 
 //functions
 {
-  function downloadFileFromURL() 
-  { 
-    window.location.href = "https://raw.githubusercontent.com/Mayankdev0923/resume/main/resume_mayank.pdf"
+  function downloadFileFromURL() {
+    window.location.href =
+      "https://raw.githubusercontent.com/Mayankdev0923/resume/main/resume_mayank.pdf";
   }
   function raf(time) {
     lenis.raf(time);
@@ -145,68 +141,144 @@ let currentSectionId = "#herosection";
     });
   }
   function openpreviewwoodward() {
-    gsap.to(iframe, {
-      duration: 0.5,
-      opacity: 0,
-      onComplete: () => {
-        iframe.src = woodwardlink;
-        // wait a moment for the iframe to start loading, then fade in
-        setTimeout(() => {
-          gsap.to(iframe, {
-            duration: 0.5,
-            opacity: 1,
+    if (woodwardlink == "") {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onComplete: () => {
+          gsap.to("#nopreview", {
+            zIndex: 2,
+            display: "block",
           });
-        }, 1000); // small delay to avoid flickering
-      },
-    });
+        },
+      });
+    } else {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onStart:()=>{
+          gsap.to("#nopreview", {
+            zIndex: -1,
+            display: "none",
+          });
+        },
+        onComplete: () => {
+          iframe.src = woodwardlink;
+          // wait a moment for the iframe to start loading, then fade in
+          setTimeout(() => {
+            gsap.to(iframe, {
+              duration: 0.5,
+              opacity: 1,
+            });
+          }, 1000); // small delay to avoid flickering
+        },
+      });
+    }
   }
   function openpreviewenergon() {
-    gsap.to(iframe, {
-      duration: 0.5,
-      opacity: 0,
-      onComplete: () => {
-        iframe.src = energonlink;
-        // wait a moment for the iframe to start loading, then fade in
-        setTimeout(() => {
-          gsap.to(iframe, {
-            duration: 0.5,
-            opacity: 1,
+    if (energonlink == "") {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onComplete: () => {
+          gsap.to("#nopreview", {
+            zIndex: 2,
+            display: "block",
           });
-        }, 1000); // small delay to avoid flickering
-      },
-    });
+        },
+      });
+    } else {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onStart:()=>{
+          gsap.to("#nopreview", {
+            zIndex: -1,
+            display: "none",
+          });
+        },
+        onComplete: () => {
+          iframe.src = energonlink;
+          // wait a moment for the iframe to start loading, then fade in
+          setTimeout(() => {
+            gsap.to(iframe, {
+              duration: 0.5,
+              opacity: 1,
+            });
+          }, 1000); // small delay to avoid flickering
+        },
+      });
+    }
   }
   function openpreviewcoderush() {
-    gsap.to(iframe, {
-      duration: 0.5,
-      opacity: 0,
-      onComplete: () => {
-        iframe.src = coderushlink;
-        // wait a moment for the iframe to start loading, then fade in
-        setTimeout(() => {
-          gsap.to(iframe, {
-            duration: 0.5,
-            opacity: 1,
+    if (coderushlink == "") {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onComplete: () => {
+          gsap.to("#nopreview", {
+            zIndex: 2,
+            display: "block",
           });
-        }, 1000); // small delay to avoid flickering
-      },
-    });
+        },
+      });
+    } else {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onStart:()=>{
+          gsap.to("#nopreview", {
+            zIndex: -1,
+            display: "none",
+          });
+        },
+        onComplete: () => {
+          iframe.src = coderushlink;
+          // wait a moment for the iframe to start loading, then fade in
+          setTimeout(() => {
+            gsap.to(iframe, {
+              duration: 0.5,
+              opacity: 1,
+            });
+          }, 1000); // small delay to avoid flickering
+        },
+      });
+    }
   }
   function openpreviewgdg() {
-    gsap.to(iframe, {
-      duration: 0.5,
-      opacity: 0,
-      onComplete: () => {
-        iframe.src = gdglink;
-        // wait a moment for the iframe to start loading, then fade in
-        setTimeout(() => {
-          gsap.to(iframe, {
-            duration: 0.5,
-            opacity: 1,
+    if (gdglink == "") {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onComplete: () => {
+          gsap.to("#nopreview", {
+            zIndex: 2,
+            display: "block",
           });
-        }, 1000); // small delay to avoid flickering
-      },
-    });
+        },
+      });
+    } else {
+      gsap.to(iframe, {
+        duration: 0.5,
+        opacity: 0,
+        onStart:()=>{
+          gsap.to("#nopreview", {
+            zIndex: -1,
+            display: "none",
+          });
+        },
+        onComplete: () => {
+          iframe.src = gdglink;
+          // wait a moment for the iframe to start loading, then fade in
+          setTimeout(() => {
+            gsap.to(iframe, {
+              duration: 0.5,
+              opacity: 1,
+            });
+          }, 1000); // small delay to avoid flickering
+        },
+      });
+    }
   }
   function closemenu() {
     if (window.matchMedia("(max-width: 768px)").matches) {

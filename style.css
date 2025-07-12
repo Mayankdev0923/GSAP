@@ -1428,10 +1428,25 @@ body.lock-scroll {
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
     pointer-events: none;
+    align-items: center;
+    justify-content: center;
   }
   #websiteframe {
     height: 100%;
     width: 100%;
+  }
+  #nopreview{
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    font-size: small;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    color: var(--brown);
   }
   #expandingbutton {
     height: 4vw;
