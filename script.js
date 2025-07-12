@@ -2204,7 +2204,7 @@ let currentSectionId = "#herosection";
       document.querySelector(".badge").addEventListener("mouseenter", () => {
         gsap.to("#cursor h4", {
           textContent:
-            "I have completed my internships from AICTE certified institutes.",
+            "I am currently an SDE intern at QUADCYDLE.",
         });
         gsap.to("#cursor", {
           borderRadius: "20px",
