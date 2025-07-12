@@ -31,8 +31,6 @@ const lenis = new Lenis({
 lenis.on("scroll", ScrollTrigger.update);
 let currentSectionId = "#herosection";
 
-
-
 //preloader stuff
 {
   document.addEventListener("DOMContentLoaded", () => {
@@ -44,7 +42,9 @@ let currentSectionId = "#herosection";
     preloader.style.display = "flex";
 
     // Show alert (or confirm/popup)
-    alert("This website is still under developement. Some elements may seem out of place on unexpected screen sizes.");
+    alert(
+      "This website is still under developement. Some elements may seem out of place on unexpected screen sizes."
+    );
 
     // Once user clicks OK
 
@@ -54,6 +54,10 @@ let currentSectionId = "#herosection";
 
 //functions
 {
+  function downloadFileFromURL() 
+  { 
+    window.location.href = "https://raw.githubusercontent.com/Mayankdev0923/resume/main/resume_mayank.pdf"
+  }
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
@@ -574,18 +578,18 @@ let currentSectionId = "#herosection";
       window.matchMedia("(prefers-color-scheme: dark)").matches;
     setTheme(prefersDark);
 
-    gsap.to("#preloader",{
-      opacity:0,
-      display:"none",
-      duration:1
-    })
+    gsap.to("#preloader", {
+      opacity: 0,
+      display: "none",
+      duration: 1,
+    });
     document.body.classList.remove("lock-scroll");
 
     if (window.matchMedia("(max-width: 768px)").matches) {
       lenis.duration = 4;
       wrapEachChar(".herotext", "char");
       wrapEachChar(".herotextsm", "char");
-      
+
       var tl = gsap.timeline();
       gsap.from(".cloud", {
         opacity: 0,
