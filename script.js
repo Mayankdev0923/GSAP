@@ -526,7 +526,7 @@ let currentSectionId = "#herosection";
 //onloadwindows
 {
   window.addEventListener("load", () => {
-    // requestAnimationFrame(raf);
+    requestAnimationFrame(raf);
 
     const prefersDark =
       window.matchMedia &&
@@ -538,6 +538,7 @@ let currentSectionId = "#herosection";
     );
 
     if (window.matchMedia("(max-width: 768px)").matches) {
+      lenis.duration = 4;
       wrapEachChar(".herotext", "char");
       wrapEachChar(".herotextsm", "char");
       var tl = gsap.timeline();

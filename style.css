@@ -508,7 +508,6 @@ body {
   #herosection {
     position: relative;
     height: fit-content;
-    overflow-x: hidden;
   }
 
   nav {
