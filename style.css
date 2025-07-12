@@ -35,7 +35,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--beige);
-  overflow: hidden;
 }
 * {
   font-family: "gilroy";
@@ -508,6 +507,7 @@ body {
   #herosection {
     position: relative;
     height: fit-content;
+    overflow-x: hidden;
   }
 
   nav {
