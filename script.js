@@ -28,8 +28,29 @@ const lenis = new Lenis({
   smooth: true,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
 });
-lenis.on('scroll', ScrollTrigger.update);
+lenis.on("scroll", ScrollTrigger.update);
 let currentSectionId = "#herosection";
+
+
+
+//preloader stuff
+{
+  document.addEventListener("DOMContentLoaded", () => {
+    // Lock scroll while preloader is visible
+    document.body.classList.add("lock-scroll");
+
+    // Show preloader immediately
+    const preloader = document.getElementById("preloader");
+    preloader.style.display = "flex";
+
+    // Show alert (or confirm/popup)
+    alert("This website is still under developement. Some elements may seem out of place on unexpected screen sizes.");
+
+    // Once user clicks OK
+
+    // Optionally trigger animations or load the rest of the content
+  });
+}
 
 //functions
 {
@@ -38,45 +59,43 @@ let currentSectionId = "#herosection";
     requestAnimationFrame(raf);
   }
   function scrollToSectionEnd(event) {
-  event.preventDefault();
+    event.preventDefault();
 
-  const href = event.currentTarget.getAttribute("href"); // e.g. "#projectsection"
-  const target = document.querySelector(href);
+    const href = event.currentTarget.getAttribute("href"); // e.g. "#projectsection"
+    const target = document.querySelector(href);
 
-  if (!target) return;
+    if (!target) return;
 
-  const rect = target.getBoundingClientRect();
-  const scrollTop = window.scrollY || window.pageYOffset;
-  const sectionBottom = rect.top + scrollTop + target.offsetHeight;
-  const scrollToY = sectionBottom - window.innerHeight;
+    const rect = target.getBoundingClientRect();
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const sectionBottom = rect.top + scrollTop + target.offsetHeight;
+    const scrollToY = sectionBottom - window.innerHeight;
 
-  // Determine scroll duration based on source → target
-  const from = currentSectionId;
-  const to = href;
-  let duration = 1.5; // default duration
+    // Determine scroll duration based on source → target
+    const from = currentSectionId;
+    const to = href;
+    let duration = 1.5; // default duration
 
-  // Customize durations here:
-  if (from === "#herosection" && to === "#skillsection") duration = 1;
-  else if (from === "#herosection" && to === "#projectsection") duration = 2;
-  else if (from === "#herosection" && to === "#contactsection") duration = 3;
-  else if (from === "#contactsection" && to === "#herosection") duration = 3;
-  else if (from === "#projectsection" && to === "#herosection") duration = 2;
-  else if (from === "#skillsection" && to === "#herosection") duration = 1;
+    // Customize durations here:
+    if (from === "#herosection" && to === "#skillsection") duration = 1;
+    else if (from === "#herosection" && to === "#projectsection") duration = 2;
+    else if (from === "#herosection" && to === "#contactsection") duration = 3;
+    else if (from === "#contactsection" && to === "#herosection") duration = 3;
+    else if (from === "#projectsection" && to === "#herosection") duration = 2;
+    else if (from === "#skillsection" && to === "#herosection") duration = 1;
 
+    // Add any more custom paths here...
 
+    // Animate scroll
+    gsap.to(window, {
+      scrollTo: scrollToY,
+      duration,
+      ease: "power2.out",
+    });
 
-  // Add any more custom paths here...
-
-  // Animate scroll
-  gsap.to(window, {
-    scrollTo: scrollToY,
-    duration,
-    ease: "power2.out",
-  });
-
-  // Update current section tracker after scroll starts
-  currentSectionId = href;
-}
+    // Update current section tracker after scroll starts
+    currentSectionId = href;
+  }
 
   function setupBoxToggle(boxClass) {
     let isTapped = false;
@@ -435,6 +454,28 @@ let currentSectionId = "#herosection";
   }
 }
 
+//sectionobserver
+{
+  const sections = document.querySelectorAll("section"); // or use specific IDs if needed
+
+  const observerOptions = {
+    root: null, // viewport
+    rootMargin: "0px",
+    threshold: 0.8, // 80% of section must be visible to count as "current"
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        currentSectionId = `#${entry.target.id}`;
+      }
+    });
+  }, observerOptions);
+
+  // Observe all section elements
+  sections.forEach((section) => observer.observe(section));
+}
+
 //section1
 {
   // Show menu
@@ -455,7 +496,7 @@ let currentSectionId = "#herosection";
       duration: 0.7,
       delay: 0.2,
     });
-  
+
     tl.to(".link", {
       x: 0,
       opacity: 1,
@@ -474,7 +515,7 @@ let currentSectionId = "#herosection";
 
     tl.to(menuCloseButton, {
       opacity: 0,
-      rotate:"-90deg",
+      rotate: "-90deg",
       duration: 0.5,
     });
     tl.to(".link", {
@@ -533,14 +574,18 @@ let currentSectionId = "#herosection";
       window.matchMedia("(prefers-color-scheme: dark)").matches;
     setTheme(prefersDark);
 
-    alert(
-      "This site is still in developement phase, so it may look different on different screens"
-    );
+    gsap.to("#preloader",{
+      opacity:0,
+      display:"none",
+      duration:1
+    })
+    document.body.classList.remove("lock-scroll");
 
     if (window.matchMedia("(max-width: 768px)").matches) {
       lenis.duration = 4;
       wrapEachChar(".herotext", "char");
       wrapEachChar(".herotextsm", "char");
+      
       var tl = gsap.timeline();
       gsap.from(".cloud", {
         opacity: 0,
@@ -1831,37 +1876,37 @@ let currentSectionId = "#herosection";
 
 //hirebutton events
 {
-  document.querySelector("#hirelink").addEventListener("click",()=>{
+  document.querySelector("#hirelink").addEventListener("click", () => {
     const temptl = gsap.timeline();
-    temptl.set(".hirebg",{
-      display:"flex"
-    })
-    temptl.to(".hirebg",{
-      opacity:1,
-      duration:0.2
-    })
-  })
-  document.querySelector(".hire").addEventListener("click",()=>{
-    window.open("mailto:mayankdev0923@gmail.com","_parent");
+    temptl.set(".hirebg", {
+      display: "flex",
+    });
+    temptl.to(".hirebg", {
+      opacity: 1,
+      duration: 0.2,
+    });
+  });
+  document.querySelector(".hire").addEventListener("click", () => {
+    window.open("mailto:mayankdev0923@gmail.com", "_parent");
     const temptl = gsap.timeline();
-    temptl.to(".hirebg",{
-      opacity:0,
-      duration:0.1
-    })
-    temptl.set(".hirebg",{
-      display:"none"
-    })
-  })
-  document.querySelector(".goback").addEventListener("click",()=>{
+    temptl.to(".hirebg", {
+      opacity: 0,
+      duration: 0.1,
+    });
+    temptl.set(".hirebg", {
+      display: "none",
+    });
+  });
+  document.querySelector(".goback").addEventListener("click", () => {
     const temptl = gsap.timeline();
-    temptl.to(".hirebg",{
-      opacity:0,
-      duration:0.2
-    })
-    temptl.set(".hirebg",{
-      display:"none"
-    })
-  })
+    temptl.to(".hirebg", {
+      opacity: 0,
+      duration: 0.2,
+    });
+    temptl.set(".hirebg", {
+      display: "none",
+    });
+  });
 }
 
 //transition section 1
@@ -1870,7 +1915,7 @@ let currentSectionId = "#herosection";
     const s1s = gsap.timeline({
       scrollTrigger: {
         trigger: "#herosection",
-        scroller:"body",
+        scroller: "body",
         start: "bottom 75%",
         end: "bottom 60%",
         scrub: true,
@@ -2274,7 +2319,7 @@ let currentSectionId = "#herosection";
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
-        scroller:"body",
+        scroller: "body",
         start: "top 60%",
         end: "bottom bottom ",
         scrub: true,
@@ -2349,7 +2394,7 @@ let currentSectionId = "#herosection";
       .timeline({
         scrollTrigger: {
           trigger: "#skillsection",
-          scroller:"body",
+          scroller: "body",
           start: "top 90%",
           end: "top 50%",
           scrub: true,
@@ -2365,7 +2410,7 @@ let currentSectionId = "#herosection";
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
-        scroller:"body",
+        scroller: "body",
         end: "bottom bottom",
         start: "top 50%",
         scrub: true,
@@ -2905,7 +2950,7 @@ let currentSectionId = "#herosection";
       scrollTrigger: {
         trigger: "#projectsection",
         start: "top 80%",
-        scroller:"body",
+        scroller: "body",
         end: "bottom bottom",
         scrub: true,
       },
@@ -2945,7 +2990,7 @@ let currentSectionId = "#herosection";
       .timeline({
         scrollTrigger: {
           trigger: "#projectsection",
-          scroller:"body",
+          scroller: "body",
           scrub: true,
           start: "top 90%",
           end: "top 50%", // ends just before pinning starts
@@ -2964,7 +3009,7 @@ let currentSectionId = "#herosection";
     const s3s = gsap.timeline({
       scrollTrigger: {
         trigger: "#projectsection",
-        scroller:"body",
+        scroller: "body",
         scrub: true,
         start: "top 50%",
         end: "bottom bottom",
@@ -3123,7 +3168,7 @@ let currentSectionId = "#herosection";
     const s4s = gsap.timeline({
       scrollTrigger: {
         trigger: "#contactsection",
-        scroller:"body",
+        scroller: "body",
         scrub: true,
         start: "top 80%",
         end: "top -10%",
@@ -3185,7 +3230,7 @@ let currentSectionId = "#herosection";
     const s4spretl = gsap.timeline({
       scrollTrigger: {
         trigger: "#contactsection",
-        scroller:"body",
+        scroller: "body",
         scrub: true,
         start: "top 90%",
         end: "top 50%",
@@ -3205,7 +3250,7 @@ let currentSectionId = "#herosection";
     const s4s = gsap.timeline({
       scrollTrigger: {
         trigger: "#contactsection",
-        scroller:"body",
+        scroller: "body",
         scrub: true,
         start: "top 50%",
         end: "bottom bottom",

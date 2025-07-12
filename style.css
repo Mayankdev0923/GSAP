@@ -60,9 +60,28 @@ body {
   font-weight: 20;
   color: var(--beige);
 }
-.noscroll {
-  overflow: hidden;
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
+  width: 100vw;
+  background: var(--dark-gray);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: sans-serif;
+}
+#preloadertext div{
+  font-size: 18vw;
+  font-family: "brick";
+  line-height: 1.1;
+  color: var(--light-grey);
+}
+body.lock-scroll {
+  overflow: hidden;
 }
 
 /* hire button */
@@ -705,6 +724,7 @@ body {
     position: absolute;
     z-index: 3;
     bottom: 0;
+    opacity: 0;
   }
 
   #myimage {
