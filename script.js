@@ -23,31 +23,60 @@ const gdglink =
   "https://webflow.com/made-in-webflow/website/Interactive-Presentation";
 const coderushlink =
   "https://webflow.com/made-in-webflow/website/True-Responsive-Testing";
-
-
+const lenis = new Lenis({
+  duration: 1.2, // adjust scroll speed
+  smooth: true,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
+});
+lenis.on('scroll', ScrollTrigger.update);
+let currentSectionId = "#herosection";
 
 //functions
 {
-  function scrollToSectionEnd(event) {
-    event.preventDefault();
-
-    const href = event.currentTarget.getAttribute("href");
-    const target = document.querySelector(href);
-
-    if (target) {
-      const rect = target.getBoundingClientRect();
-      const scrollTop = window.scrollY || window.pageYOffset;
-      const sectionBottom = rect.top + scrollTop;
-
-      const scrollToY = sectionBottom - window.innerHeight;
-
-      gsap.to(window, {
-        scrollTo: scrollToY,
-        duration: 1.5,
-        ease: "power2.out",
-      });
-    }
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
   }
+  function scrollToSectionEnd(event) {
+  event.preventDefault();
+
+  const href = event.currentTarget.getAttribute("href"); // e.g. "#projectsection"
+  const target = document.querySelector(href);
+
+  if (!target) return;
+
+  const rect = target.getBoundingClientRect();
+  const scrollTop = window.scrollY || window.pageYOffset;
+  const sectionBottom = rect.top + scrollTop + target.offsetHeight;
+  const scrollToY = sectionBottom - window.innerHeight;
+
+  // Determine scroll duration based on source → target
+  const from = currentSectionId;
+  const to = href;
+  let duration = 1.5; // default duration
+
+  // Customize durations here:
+  if (from === "#herosection" && to === "#skillsection") duration = 1;
+  else if (from === "#herosection" && to === "#projectsection") duration = 2;
+  else if (from === "#herosection" && to === "#contactsection") duration = 3;
+  else if (from === "#contactsection" && to === "#herosection") duration = 3;
+  else if (from === "#projectsection" && to === "#herosection") duration = 2;
+  else if (from === "#skillsection" && to === "#herosection") duration = 1;
+
+
+
+  // Add any more custom paths here...
+
+  // Animate scroll
+  gsap.to(window, {
+    scrollTo: scrollToY,
+    duration,
+    ease: "power2.out",
+  });
+
+  // Update current section tracker after scroll starts
+  currentSectionId = href;
+}
 
   function setupBoxToggle(boxClass) {
     let isTapped = false;
@@ -422,10 +451,11 @@ const coderushlink =
     // Animate
     gsap.to(menuBlur, {
       x: 0,
-      opacity: 0.9,
+      opacity: 0.97,
       duration: 0.7,
       delay: 0.2,
     });
+  
     tl.to(".link", {
       x: 0,
       opacity: 1,
@@ -444,6 +474,7 @@ const coderushlink =
 
     tl.to(menuCloseButton, {
       opacity: 0,
+      rotate:"-90deg",
       duration: 0.5,
     });
     tl.to(".link", {
@@ -495,13 +526,19 @@ const coderushlink =
 //onloadwindows
 {
   window.addEventListener("load", () => {
-    
+    requestAnimationFrame(raf);
+
     const prefersDark =
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches;
     setTheme(prefersDark);
 
+    alert(
+      "This site is still in developement phase, so it may look different on different screens"
+    );
+
     if (window.matchMedia("(max-width: 768px)").matches) {
+      lenis.duration = 4;
       wrapEachChar(".herotext", "char");
       wrapEachChar(".herotextsm", "char");
       var tl = gsap.timeline();
@@ -1534,44 +1571,80 @@ const coderushlink =
       }
       //navicons color animation
       {
-        const navis = document.querySelectorAll("#navicon");
+        const github = document.querySelector(".githubnav");
 
-        navis.forEach((navi) => {
-          navi.addEventListener("mouseenter", () => {
-            const path = navi.querySelector("path");
-            gsap.to(navi, {
-              scale: 1.1,
-              duration: 0.3,
-              ease: "back.out(2)",
-            });
+        github.addEventListener("mouseenter", () => {
+          const path = github.querySelector("path");
+          gsap.to(github, {
+            scale: 1.1,
+            duration: 0.3,
+            ease: "back.out(2)",
+          });
+          gsap.to(path, {
+            fill: "#111",
+            duration: 0.3,
+            ease: "back.out(2)",
+          });
+        });
+
+        github.addEventListener("mouseleave", () => {
+          const path = github.querySelector("path");
+          gsap.to(github, {
+            scale: 1,
+            duration: 0.3,
+            ease: "back.out(2)",
+          });
+          if (isDarkMode) {
             gsap.to(path, {
-              fill: orange,
+              fill: beige,
               duration: 0.3,
               ease: "back.out(2)",
             });
-          });
+          } else {
+            gsap.to(path, {
+              fill: brown,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          }
+        });
 
-          navi.addEventListener("mouseleave", () => {
-            const path = navi.querySelector("path");
-            gsap.to(navi, {
-              scale: 1,
+        const linkedin = document.querySelector(".linkedinnav");
+
+        linkedin.addEventListener("mouseenter", () => {
+          const path = linkedin.querySelector("path");
+          gsap.to(linkedin, {
+            scale: 1.1,
+            duration: 0.3,
+            ease: "back.out(2)",
+          });
+          gsap.to(path, {
+            fill: lightblue,
+            duration: 0.3,
+            ease: "back.out(2)",
+          });
+        });
+
+        linkedin.addEventListener("mouseleave", () => {
+          const path = linkedin.querySelector("path");
+          gsap.to(linkedin, {
+            scale: 1,
+            duration: 0.3,
+            ease: "back.out(2)",
+          });
+          if (isDarkMode) {
+            gsap.to(path, {
+              fill: beige,
               duration: 0.3,
               ease: "back.out(2)",
             });
-            if (isDarkMode) {
-              gsap.to(path, {
-                fill: beige,
-                duration: 0.3,
-                ease: "back.out(2)",
-              });
-            } else {
-              gsap.to(path, {
-                fill: brown,
-                duration: 0.3,
-                ease: "back.out(2)",
-              });
-            }
-          });
+          } else {
+            gsap.to(path, {
+              fill: brown,
+              duration: 0.3,
+              ease: "back.out(2)",
+            });
+          }
         });
       }
 
@@ -1756,13 +1829,47 @@ const coderushlink =
   });
 }
 
+//hirebutton events
+{
+  document.querySelector("#hirelink").addEventListener("click",()=>{
+    const temptl = gsap.timeline();
+    temptl.set(".hirebg",{
+      display:"flex"
+    })
+    temptl.to(".hirebg",{
+      opacity:1,
+      duration:0.2
+    })
+  })
+  document.querySelector(".hire").addEventListener("click",()=>{
+    window.open("mailto:mayankdev0923@gmail.com","_parent");
+    const temptl = gsap.timeline();
+    temptl.to(".hirebg",{
+      opacity:0,
+      duration:0.1
+    })
+    temptl.set(".hirebg",{
+      display:"none"
+    })
+  })
+  document.querySelector(".goback").addEventListener("click",()=>{
+    const temptl = gsap.timeline();
+    temptl.to(".hirebg",{
+      opacity:0,
+      duration:0.2
+    })
+    temptl.set(".hirebg",{
+      display:"none"
+    })
+  })
+}
+
 //transition section 1
 {
   if (window.matchMedia("(max-width: 768px)").matches) {
     const s1s = gsap.timeline({
       scrollTrigger: {
         trigger: "#herosection",
-        scroller: "body",
         start: "bottom 75%",
         end: "bottom 60%",
         scrub: true,
@@ -2166,7 +2273,6 @@ const coderushlink =
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
-        scroller: "body",
         start: "top 60%",
         end: "bottom bottom ",
         scrub: true,
@@ -2241,9 +2347,8 @@ const coderushlink =
       .timeline({
         scrollTrigger: {
           trigger: "#skillsection",
-          scroller: "body",
           start: "top 90%",
-          end: "top 10%",
+          end: "top 50%",
           scrub: true,
         },
       })
@@ -2257,10 +2362,8 @@ const coderushlink =
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
-        scroller: "body",
-        end: "+=1500px",
-        start: "top 0%",
-        pin: true,
+        end: "bottom bottom",
+        start: "top 50%",
         scrub: true,
       },
     });
@@ -2613,6 +2716,40 @@ const coderushlink =
           });
       }
     }
+    //homeicon cursor text animation
+    {
+      document
+        .querySelector("#homeicon2")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Go to Homepage",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "fit-content",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector("#homeicon2")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
 
     //expandicon onclick event
     document.querySelector("#expandicon").addEventListener("click", () => {
@@ -2763,7 +2900,6 @@ const coderushlink =
     const s3s = gsap.timeline({
       scrollTrigger: {
         trigger: "#projectsection",
-        scroller: "body",
         start: "top 80%",
         end: "bottom bottom",
         scrub: true,
@@ -2804,10 +2940,9 @@ const coderushlink =
       .timeline({
         scrollTrigger: {
           trigger: "#projectsection",
-          scroller: "body",
           scrub: true,
           start: "top 90%",
-          end: "top", // ends just before pinning starts
+          end: "top 50%", // ends just before pinning starts
         },
       })
       .from("#projecttitle", {
@@ -2823,11 +2958,9 @@ const coderushlink =
     const s3s = gsap.timeline({
       scrollTrigger: {
         trigger: "#projectsection",
-        scroller: "body",
-        pin: true,
         scrub: true,
-        start: "top 0%",
-        end: "+=1500px",
+        start: "top 50%",
+        end: "bottom bottom",
       },
     });
     s3s.from(".homeiconcontainer svg", {
@@ -2889,53 +3022,91 @@ const coderushlink =
 
 //section 4
 {
-  //hover animations
-  {
-    const list2contents = document.querySelectorAll(".list2content");
-    list2contents.forEach((contentbox) => {
-      contentbox.addEventListener("mouseenter", () => {
-        gsap.to(contentbox, {
-          backgroundColor: "rgba(255,255,255,0.5)",
-          scale: 0.95,
+  if (window.matchMedia("(max-width: 768px)").matches) {
+  } else {
+    //hover animations
+    {
+      const list2contents = document.querySelectorAll(".list2content");
+      list2contents.forEach((contentbox) => {
+        contentbox.addEventListener("mouseenter", () => {
+          gsap.to(contentbox, {
+            backgroundColor: "rgba(255,255,255,0.5)",
+            scale: 0.95,
+          });
+        });
+        contentbox.addEventListener("mouseleave", () => {
+          gsap.to(contentbox, {
+            backgroundColor: "rgba(255,255,255,0.2)",
+            scale: 1,
+          });
         });
       });
-      contentbox.addEventListener("mouseleave", () => {
-        gsap.to(contentbox, {
-          backgroundColor: "rgba(255,255,255,0.2)",
-          scale: 1,
+    }
+    //cursor text animations
+    {
+      document.querySelector("#mountain").addEventListener("mouseenter", () => {
+        gsap.to("#cursor h4", {
+          textContent: "This is just a mountain....",
+        });
+        gsap.to("#cursor", {
+          borderRadius: "20px",
+          height: "fit-content",
+          width: "20vw",
+          padding: "0vh 1.8vh",
+          duration: 0.5,
+          ease: "back.out",
         });
       });
-    });
-  }
-  //cursor text animations
-  {
-    document.querySelector("#mountain").addEventListener("mouseenter", () => {
-      gsap.to("#cursor h4", {
-        textContent: "This is just a mountain....",
-      });
-      gsap.to("#cursor", {
-        borderRadius: "20px",
-        height: "fit-content",
-        width: "20vw",
-        padding: "0vh 1.8vh",
-        duration: 0.5,
-        ease: "back.out",
-      });
-    });
 
-    document.querySelector("#mountain").addEventListener("mouseleave", () => {
-      gsap.to("#cursor h4", {
-        textContent: "",
+      document.querySelector("#mountain").addEventListener("mouseleave", () => {
+        gsap.to("#cursor h4", {
+          textContent: "",
+        });
+        gsap.to("#cursor", {
+          borderRadius: "50%",
+          height: "30px",
+          width: "30px",
+          padding: 0,
+          duration: 0.5,
+          ease: "back.out",
+        });
       });
-      gsap.to("#cursor", {
-        borderRadius: "50%",
-        height: "30px",
-        width: "30px",
-        padding: 0,
-        duration: 0.5,
-        ease: "back.out",
-      });
-    });
+    }
+
+    //homeicon cursor text animation
+    {
+      document
+        .querySelector("#homeicon3")
+        .addEventListener("mouseenter", () => {
+          gsap.to("#cursor h4", {
+            textContent: "Go to Homepage",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "20px",
+            height: "fit-content",
+            width: "fit-content",
+            padding: "0vh 1.8vh",
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+
+      document
+        .querySelector("#homeicon3")
+        .addEventListener("mouseleave", () => {
+          gsap.to("#cursor h4", {
+            textContent: "",
+          });
+          gsap.to("#cursor", {
+            borderRadius: "50%",
+            height: "30px",
+            width: "30px",
+            padding: 0,
+            duration: 0.5,
+            ease: "back.out",
+          });
+        });
+    }
   }
 }
 
@@ -2947,7 +3118,7 @@ const coderushlink =
         trigger: "#contactsection",
         scrub: true,
         start: "top 80%",
-        end: "top 0%",
+        end: "top -10%",
       },
     });
     s4s.from("#contacttitle h1", {
@@ -3008,7 +3179,7 @@ const coderushlink =
         trigger: "#contactsection",
         scrub: true,
         start: "top 90%",
-        end: "top 0%",
+        end: "top 50%",
       },
     });
     s4spretl.from("#contacttitle h1", {
@@ -3025,11 +3196,9 @@ const coderushlink =
     const s4s = gsap.timeline({
       scrollTrigger: {
         trigger: "#contactsection",
-        scroller: "body",
         scrub: true,
-        start: "top top",
-        end: "+=100%",
-        pin: true,
+        start: "top 50%",
+        end: "bottom bottom",
       },
     });
     s4s.from("#navline4", {

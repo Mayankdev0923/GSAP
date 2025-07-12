@@ -35,7 +35,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--beige);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 * {
   font-family: "gilroy";
@@ -63,6 +63,102 @@ body {
 .noscroll {
   overflow: hidden;
   height: 100vh;
+}
+
+/* hire button */
+@media screen {
+  .hirebg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    backdrop-filter: blur(60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+  .hirebox {
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 40vh;
+    width: 40vw;
+    border-radius: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+  }
+  .hirebuttons {
+    display: flex;
+    width: 60%;
+    gap: 1vw;
+    padding: 0.5vw;
+    align-items: center;
+    justify-content: center;
+  }
+  .hiretext {
+    text-align: center;
+    width: 60%;
+    font-size: 1.5vw;
+  }
+  .hire {
+    height: fit-content;
+    width: 50%;
+    padding: 1vw;
+    border-radius: 20px;
+    border: none;
+  }
+  #hirelink {
+    cursor: pointer;
+  }
+  .goback {
+    height: fit-content;
+    width: 50%;
+    padding: 1vw;
+    border-radius: 20px;
+    border: none;
+  }
+  .hire:hover {
+    background-color: var(--orange);
+    color: #fff;
+  }
+  .goback:hover {
+    background-color: var(--dark-gray);
+    color: #fff;
+  }
+}
+@media (max-width: 768px) {
+  .hirebox {
+    width: 80vw;
+    padding: 4vw;
+  }
+  .hiretext {
+    width: 80%;
+    font-size: larger;
+  }
+  .hirebuttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 2vw;
+  }
+  .hire {
+    width: 80%;
+    font-size: 6vw;
+    font-weight: 800;
+    color: #545454;
+    font-family: "";
+    padding: 2vw;
+  }
+  .goback {
+    width: 80%;
+    font-size: 6vw;
+    font-weight: 800;
+    color: #545454;
+    font-family: "";
+    padding: 2vw;
+  }
 }
 
 /* section 1 */
@@ -165,9 +261,11 @@ body {
 
   #herotextsm1 {
     display: none;
+    font-family: "brick";
   }
   #herotextsm2 {
     display: none;
+    font-family: "brick";
   }
 
   #herotext {
@@ -427,12 +525,12 @@ body {
     display: none;
     transform: translateX(-80vw);
     position: fixed;
-    z-index: 90; /* make sure it's on top of EVERYTHING */
+    z-index: 90;
     left: 0;
     width: 50vw;
     height: 100vh;
     background-color: var(--beige);
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(90px);
     opacity: 0;
   }
   #sidemenuopenicon {
@@ -944,6 +1042,7 @@ body {
     height: fit-content;
     padding: 2vw 4vw;
     position: relative;
+    overflow-x: hidden;
   }
   .smvisible {
     display: block;
@@ -1366,6 +1465,7 @@ body {
     padding: 0vw 6vw;
     overflow: visible;
     min-height: 100%;
+    overflow-x: hidden;
   }
   .projectsectioncontainer {
     height: fit-content;
@@ -1500,6 +1600,10 @@ body {
 
 /* Section 4 */
 @media screen {
+  .spacefill {
+    height: 100%;
+    width: 100%;
+  }
   #contactsection {
     height: 100%;
     width: 100%;
@@ -1649,7 +1753,7 @@ body {
     width: 50vw;
     bottom: 0%;
     right: 5%;
-    z-index:2;
+    z-index: 2;
   }
 }
 @media (max-width: 768px) {
@@ -1659,6 +1763,7 @@ body {
   #contactsection {
     padding: 4vw 6vw;
     overflow: hidden;
+    overflow-x: hidden;
   }
   #listgrid {
     flex-direction: column;
@@ -1721,7 +1826,7 @@ body {
     height: 5vh;
   }
 }
-@media (max-width: 768px){
+@media (max-width: 768px) {
   #endcredits {
     color: var(--brown);
     text-align: center;
