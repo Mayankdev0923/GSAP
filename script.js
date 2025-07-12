@@ -1870,6 +1870,7 @@ let currentSectionId = "#herosection";
     const s1s = gsap.timeline({
       scrollTrigger: {
         trigger: "#herosection",
+        scroller:"body",
         start: "bottom 75%",
         end: "bottom 60%",
         scrub: true,
@@ -2273,6 +2274,7 @@ let currentSectionId = "#herosection";
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
+        scroller:"body",
         start: "top 60%",
         end: "bottom bottom ",
         scrub: true,
@@ -2347,6 +2349,7 @@ let currentSectionId = "#herosection";
       .timeline({
         scrollTrigger: {
           trigger: "#skillsection",
+          scroller:"body",
           start: "top 90%",
           end: "top 50%",
           scrub: true,
@@ -2362,6 +2365,7 @@ let currentSectionId = "#herosection";
     const s2s = gsap.timeline({
       scrollTrigger: {
         trigger: "#skillsection",
+        scroller:"body",
         end: "bottom bottom",
         start: "top 50%",
         scrub: true,
@@ -2901,6 +2905,7 @@ let currentSectionId = "#herosection";
       scrollTrigger: {
         trigger: "#projectsection",
         start: "top 80%",
+        scroller:"body",
         end: "bottom bottom",
         scrub: true,
       },
@@ -2940,6 +2945,7 @@ let currentSectionId = "#herosection";
       .timeline({
         scrollTrigger: {
           trigger: "#projectsection",
+          scroller:"body",
           scrub: true,
           start: "top 90%",
           end: "top 50%", // ends just before pinning starts
@@ -2958,6 +2964,7 @@ let currentSectionId = "#herosection";
     const s3s = gsap.timeline({
       scrollTrigger: {
         trigger: "#projectsection",
+        scroller:"body",
         scrub: true,
         start: "top 50%",
         end: "bottom bottom",
@@ -3116,6 +3123,7 @@ let currentSectionId = "#herosection";
     const s4s = gsap.timeline({
       scrollTrigger: {
         trigger: "#contactsection",
+        scroller:"body",
         scrub: true,
         start: "top 80%",
         end: "top -10%",
@@ -3177,6 +3185,7 @@ let currentSectionId = "#herosection";
     const s4spretl = gsap.timeline({
       scrollTrigger: {
         trigger: "#contactsection",
+        scroller:"body",
         scrub: true,
         start: "top 90%",
         end: "top 50%",
@@ -3196,6 +3205,7 @@ let currentSectionId = "#herosection";
     const s4s = gsap.timeline({
       scrollTrigger: {
         trigger: "#contactsection",
+        scroller:"body",
         scrub: true,
         start: "top 50%",
         end: "bottom bottom",
